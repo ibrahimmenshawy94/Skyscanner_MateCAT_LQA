@@ -6,6 +6,7 @@ paths:
   xliff_download_dir: "XLIFF_Downloads"
   chrome_profile_dir: "C:\\Users\\ibrahim.menshawy\\Desktop\\ATMS_Profile"
   output_dir: "Output"
+  checkpoints_dir: "checkpoints"
 
 languages:
   # Use ["ALL"] to process every language found in the tracker.
@@ -41,12 +42,12 @@ tb:
 
 llm:
   # Default model (used if agent-specific values below are not set)
-  model: "gpt-5-mini"
+  model: "gemini-3-pro-preview"
   # Agent-specific overrides (optional)
   agent1_model: ""
   agent2_model: ""
   # Option A: put the key here (not recommended for production)
-  api_key: ""
+  api_key: "AIzaSyCKuj7ei9HBMjnJJaPOPNVG4_QPkYNOnzo"
   agent1_api_key: ""
   agent2_api_key: ""
   # Option B: set env vars and reference them
@@ -54,9 +55,9 @@ llm:
   agent1_api_key_env: ""
   agent2_api_key_env: ""
   temp: 1.0
-  batch_segments: 1
-  max_concurrency: 50
-  wait_seconds: 5
+  batch_segments: 5
+  max_concurrency: 25
+  wait_seconds: 1
   source_lang_label: "English (UK)"
 
 prompts:

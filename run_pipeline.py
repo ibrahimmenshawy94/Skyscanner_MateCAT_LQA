@@ -44,6 +44,19 @@ def _get_api_key(llm_cfg: Dict, *, agent: str | None = None) -> str:
     return api_key
 
 
+def load_checkpoint(checkpoints_dir: Path, language: str) -> pd.DataFrame | None:
+    ckpt_path = checkpoints_dir / language / "df_checkpoint.parquet"
+    if ckpt_path.exists():
+        return pd.read_parquet(ckpt_path)
+    return None
+
+
+def save_checkpoint(df: pd.DataFrame, checkpoints_dir: Path, language: str) -> None:
+    ckpt_lang_dir = checkpoints_dir / language
+    ckpt_lang_dir.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(ckpt_lang_dir / "df_checkpoint.parquet", index=False)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run full LQA pipeline.")
     parser.add_argument("--config", default="config.yaml", help="Path to YAML config.")
@@ -70,6 +83,7 @@ def main():
     instructions_dir = Path(paths.get("instructions_dir", "Langs_Instructions")).expanduser()
     xliff_dir = Path(paths.get("xliff_download_dir", "XLIFF_Downloads")).expanduser()
     output_dir = Path(paths.get("output_dir", "Output")).expanduser()
+    checkpoints_dir = Path(paths.get("checkpoints_dir", "checkpoints")).expanduser()
 
     tracker_df = read_excel_file(tracker_path)
     requested_langs = args.languages or languages_cfg.get("process", ["ALL"])
@@ -99,10 +113,16 @@ def main():
     src_lang_label = llm_cfg.get("source_lang_label", "English (UK)")
 
     for lang in languages:
-        lang_df = df_final[df_final["Language"] == lang].copy()
-        if lang_df.empty:
-            logger.warning("No rows for language %s after TB matching; skipping.", lang)
-            continue
+        # Checkpoint: load existing if present
+        ckpt_df = load_checkpoint(checkpoints_dir, lang)
+        if ckpt_df is not None:
+            logger.info("Loaded checkpoint for %s", lang)
+            lang_df = ckpt_df
+        else:
+            lang_df = df_final[df_final["Language"] == lang].copy()
+            if lang_df.empty:
+                logger.warning("No rows for language %s after TB matching; skipping.", lang)
+                continue
 
         lang_cfg_entry = languages_cfg.get("mapping", {}).get(lang, {})
         guideline_file = lang_cfg_entry.get("guidelines")
@@ -150,23 +170,37 @@ def main():
             system=system_agent2,
         )
 
-        logger.info("Running Agent 1 for %s (%d segments)", lang, len(lang_df))
-        df_step1 = run_lqa_first_pass(
-            lang_df,
-            agent1_cfg,
-            batch_segments=int(llm_cfg.get("batch_segments", 1)),
-            max_concurrency=int(llm_cfg.get("max_concurrency", 25)),
-            wait_seconds=int(llm_cfg.get("wait_seconds", 5)),
-            include_context=True,
-        )
+        # Decide starting stage based on checkpoint content
+        if "Agent2_Status" in lang_df.columns and (lang_df["Agent2_Status"].fillna("") != "").all():
+            logger.info("Agent 2 already completed for %s. Skipping LLM calls.", lang)
+            df_result = lang_df.copy()
+        else:
+            if "Batch_ID" in lang_df.columns:
+                df_step1 = lang_df.copy()
+                logger.info("Resuming from Agent1-complete checkpoint for %s", lang)
+            else:
+                logger.info("Running Agent 1 for %s (%d segments)", lang, len(lang_df))
+                df_step1 = run_lqa_first_pass(
+                    lang_df,
+                    agent1_cfg,
+                    batch_segments=int(llm_cfg.get("batch_segments", 1)),
+                    max_concurrency=int(llm_cfg.get("max_concurrency", 25)),
+                    wait_seconds=int(llm_cfg.get("wait_seconds", 5)),
+                    include_context=True,
+                )
+                save_checkpoint(df_step1, checkpoints_dir, lang)
 
-        logger.info("Running Agent 2 for %s", lang)
-        df_result = run_lqa_review_pass(
-            df_step1,
-            agent2_cfg,
-            max_concurrency=int(llm_cfg.get("max_concurrency", 25)),
-            wait_seconds=int(llm_cfg.get("wait_seconds", 5)),
-        )
+            if "Agent2_Status" in df_step1.columns and (df_step1["Agent2_Status"].fillna("") != "").all():
+                df_result = df_step1.copy()
+            else:
+                logger.info("Running Agent 2 for %s", lang)
+                df_result = run_lqa_review_pass(
+                    df_step1,
+                    agent2_cfg,
+                    max_concurrency=int(llm_cfg.get("max_concurrency", 25)),
+                    wait_seconds=int(llm_cfg.get("wait_seconds", 5)),
+                )
+                save_checkpoint(df_result, checkpoints_dir, lang)
 
         # Normalize category/subcategory to the allowed set
         df_result["Final_Errors"] = df_result["Final_Errors"].apply(normalize_errors_list)
