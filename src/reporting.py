@@ -181,14 +181,13 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
 
         col_idx += 1
 
-        # HITL Columns
+        # HITL Columns (no merging; per-error rows editable)
         hitl_status_col = col_idx
         hitl_cat_col = col_idx + 1
         hitl_sev_col = col_idx + 2
         hitl_rat_col = col_idx + 3
         hitl_final_col = col_idx + 4
 
-        # Always keep the HITL cells aligned/merged across sub-rows
         for i in range(num_sub_rows):
             r = start_row + i
             ws.cell(row=r, column=hitl_status_col).alignment = Alignment(vertical="top", wrap_text=True)
@@ -196,13 +195,6 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
             ws.cell(row=r, column=hitl_sev_col).alignment = Alignment(vertical="top", wrap_text=True)
             ws.cell(row=r, column=hitl_rat_col).alignment = Alignment(vertical="top", wrap_text=True)
             ws.cell(row=r, column=hitl_final_col).alignment = Alignment(vertical="top", wrap_text=True)
-
-        if num_sub_rows > 1:
-            ws.merge_cells(start_row=start_row, start_column=hitl_status_col, end_row=end_row, end_column=hitl_status_col)
-            ws.merge_cells(start_row=start_row, start_column=hitl_cat_col, end_row=end_row, end_column=hitl_cat_col)
-            ws.merge_cells(start_row=start_row, start_column=hitl_sev_col, end_row=end_row, end_column=hitl_sev_col)
-            ws.merge_cells(start_row=start_row, start_column=hitl_rat_col, end_row=end_row, end_column=hitl_rat_col)
-            ws.merge_cells(start_row=start_row, start_column=hitl_final_col, end_row=end_row, end_column=hitl_final_col)
 
         col_idx += 5
 
