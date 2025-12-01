@@ -65,12 +65,7 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
         ("Char Count", None, 15, False),
     ]
 
-    all_headers = (
-        [c[0] for c in static_cols_config]
-        + error_headers
-        + [c[0] for c in final_cols_config]
-        + hitl_headers
-    )
+    all_headers = [c[0] for c in static_cols_config] + error_headers + [c[0] for c in final_cols_config] + hitl_headers
     ws.append(all_headers)
 
     header_fill = PatternFill(start_color="4472C4", end_color="4472C4", fill_type="solid")
@@ -156,6 +151,27 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
 
         col_idx += 3
 
+        # Final Target & Count (always write, merged when needed)
+        final_target_val = row.get("Final_Target", "")
+        ft_cell = ws.cell(row=start_row, column=col_idx, value=final_target_val)
+        if num_sub_rows > 1:
+            ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
+        ft_cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+        col_idx += 1
+        if has_char_limit:
+            target_cell_ref = ft_cell.coordinate
+            formula = f"=LEN({target_cell_ref})"
+            count_cell = ws.cell(row=start_row, column=col_idx, value=formula)
+            if num_sub_rows > 1:
+                ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
+            count_cell.alignment = Alignment(vertical="top", horizontal="center")
+        else:
+            if num_sub_rows > 1:
+                ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
+
+        col_idx += 1
+
         # HITL Columns
         hitl_status_col = col_idx
         hitl_cat_col = col_idx + 1
@@ -163,49 +179,23 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
         hitl_rat_col = col_idx + 3
         hitl_final_col = col_idx + 4
 
-        if has_errors:
-            for i in range(num_sub_rows):
-                r = start_row + i
-                ws.cell(row=r, column=hitl_status_col).alignment = Alignment(vertical="top", wrap_text=True)
-                ws.cell(row=r, column=hitl_cat_col).alignment = Alignment(vertical="top", wrap_text=True)
-                ws.cell(row=r, column=hitl_sev_col).alignment = Alignment(vertical="top", wrap_text=True)
-                ws.cell(row=r, column=hitl_rat_col).alignment = Alignment(vertical="top", wrap_text=True)
-                ws.cell(row=r, column=hitl_final_col).alignment = Alignment(vertical="top", wrap_text=True)
-        else:
-            if num_sub_rows > 1:
-                ws.merge_cells(start_row=start_row, start_column=hitl_status_col, end_row=end_row, end_column=hitl_status_col)
-                ws.merge_cells(start_row=start_row, start_column=hitl_cat_col, end_row=end_row, end_column=hitl_cat_col)
-                ws.merge_cells(start_row=start_row, start_column=hitl_sev_col, end_row=end_row, end_column=hitl_sev_col)
-                ws.merge_cells(start_row=start_row, start_column=hitl_rat_col, end_row=end_row, end_column=hitl_rat_col)
-                ws.merge_cells(start_row=start_row, start_column=hitl_final_col, end_row=end_row, end_column=hitl_final_col)
+        # Always keep the HITL cells aligned/merged across sub-rows
+        for i in range(num_sub_rows):
+            r = start_row + i
+            ws.cell(row=r, column=hitl_status_col).alignment = Alignment(vertical="top", wrap_text=True)
+            ws.cell(row=r, column=hitl_cat_col).alignment = Alignment(vertical="top", wrap_text=True)
+            ws.cell(row=r, column=hitl_sev_col).alignment = Alignment(vertical="top", wrap_text=True)
+            ws.cell(row=r, column=hitl_rat_col).alignment = Alignment(vertical="top", wrap_text=True)
+            ws.cell(row=r, column=hitl_final_col).alignment = Alignment(vertical="top", wrap_text=True)
+
+        if num_sub_rows > 1:
+            ws.merge_cells(start_row=start_row, start_column=hitl_status_col, end_row=end_row, end_column=hitl_status_col)
+            ws.merge_cells(start_row=start_row, start_column=hitl_cat_col, end_row=end_row, end_column=hitl_cat_col)
+            ws.merge_cells(start_row=start_row, start_column=hitl_sev_col, end_row=end_row, end_column=hitl_sev_col)
+            ws.merge_cells(start_row=start_row, start_column=hitl_rat_col, end_row=end_row, end_column=hitl_rat_col)
+            ws.merge_cells(start_row=start_row, start_column=hitl_final_col, end_row=end_row, end_column=hitl_final_col)
 
         col_idx += 5
-
-        # Final Target & Count
-        if has_errors:
-            final_target_val = row.get("Final_Target", "")
-            ft_cell = ws.cell(row=start_row, column=col_idx, value=final_target_val)
-            if num_sub_rows > 1:
-                ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
-            ft_cell.alignment = Alignment(vertical="top", wrap_text=True)
-
-            col_idx += 1
-            if has_char_limit:
-                target_cell_ref = ft_cell.coordinate
-                formula = f"=LEN({target_cell_ref})"
-                count_cell = ws.cell(row=start_row, column=col_idx, value=formula)
-                if num_sub_rows > 1:
-                    ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
-                count_cell.alignment = Alignment(vertical="top", horizontal="center")
-            else:
-                if num_sub_rows > 1:
-                    ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
-        else:
-            if num_sub_rows > 1:
-                ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
-            col_idx += 1
-            if num_sub_rows > 1:
-                ws.merge_cells(start_row=start_row, start_column=col_idx, end_row=end_row, end_column=col_idx)
 
         total_cols = len(static_cols_config) + len(error_headers) + len(final_cols_config) + len(hitl_headers)
 
@@ -243,7 +233,8 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
         current_col += 1
 
     limit_col_letter = "C"
-    count_col_letter = get_column_letter(len(static_cols_config) + len(error_headers) + 2)  # Char Count column
+    # Char Count column index: static + error + 2nd of final_cols_config
+    count_col_letter = get_column_letter(len(static_cols_config) + len(error_headers) + 2)
     format_range = f"{count_col_letter}2:{count_col_letter}{max(2, current_row-1)}"
 
     red_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
@@ -266,6 +257,13 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
         status_dv = DataValidation(type="list", formula1='"Accepted,Rejected,Edited"', allow_blank=True)
         status_dv.add(f"{status_col_letter}2:{status_col_letter}{last_row}")
         ws.add_data_validation(status_dv)
+
+        hitl_sev_options = ["Critical", "Major", "Minor", "Neutral"]
+        sev_list = ",".join(hitl_sev_options)
+        hitl_sev_col_letter = get_column_letter(len(static_cols_config) + len(error_headers) + len(final_cols_config) + 3)
+        sev_dv = DataValidation(type="list", formula1=f'"{sev_list}"', allow_blank=True)
+        sev_dv.add(f"{hitl_sev_col_letter}2:{hitl_sev_col_letter}{last_row}")
+        ws.add_data_validation(sev_dv)
 
         hitl_cat_options = [
             "Accuracy - Mistranslation",
