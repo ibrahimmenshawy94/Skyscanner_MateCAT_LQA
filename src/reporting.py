@@ -288,6 +288,12 @@ def generate_lqa_scorecard(df_result, base_output_folder, language_name):
         cat_dv.add(f"{cat_col_letter}2:{cat_col_letter}{last_row}")
         ws.add_data_validation(cat_dv)
 
+        # Expand validation range for HITL severity and status across all error sub-rows
+        status_dv.ranges = []
+        status_dv.add(f"{status_col_letter}2:{status_col_letter}{last_row}")
+        sev_dv.ranges = []
+        sev_dv.add(f"{hitl_sev_col_letter}2:{hitl_sev_col_letter}{last_row}")
+
     wb.save(output_path)
     print(f"Scorecard saved to: {output_path}")
     return output_path
