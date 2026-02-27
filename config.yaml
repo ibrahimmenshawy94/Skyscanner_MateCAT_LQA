@@ -52,8 +52,8 @@ llm:
   # Default model (used if agent-specific values below are not set)
   model: ""
   # Agent-specific overrides (optional)
-  agent1_model: "gemini-3-pro-preview"
-  agent2_model: "claude-opus-4-5-20251101"
+  agent1_model: "gemini-3.1-pro-preview"
+  agent2_model: "claude-opus-4-6"
   # Option A: put the key here (not recommended for production)
   api_key: ""
   agent1_api_key: ""

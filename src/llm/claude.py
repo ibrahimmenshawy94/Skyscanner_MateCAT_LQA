@@ -16,18 +16,18 @@ logger = logging.getLogger(__name__)
     reraise=True,
 )
 async def _call_claude_once_json(
-    api_key: str,
+    client: AsyncAnthropic,
     llm_model: str,
     temp: float,
     parts: Dict[str, str],
-    client: AsyncAnthropic,
 ) -> Dict[str, Any]:
     """
     One Anthropic call. Tenacity handles retries externally.
+    Client is passed in to enable connection reuse.
     """
     msg = await client.messages.create(
         model=llm_model,
-        max_tokens=18_000,
+        max_tokens=32_000,
         temperature=temp,
         system=[
             {
@@ -42,7 +42,11 @@ async def _call_claude_once_json(
                 "content": [{"type": "text", "text": parts["prompt"]}],
             }
         ],
-        thinking={"type": "enabled", "budget_tokens": 16_000},
+        thinking={
+            "type": "enabled",
+            "budget_tokens": 28_000
+        },
+        output_config={"effort":"high"},
     )
 
     raw = msg.content[1].text
@@ -59,13 +63,16 @@ async def get_claude_json(
     Returns list aligned with *prompt_parts_list*.
     On success    -> parsed dict
     On final fail -> {"error": "..."} (keeps position)
+
+    Creates a single client and reuses it for all requests.
     """
-    client = AsyncAnthropic(api_key=api_key)
+    # Create client once, reuse for all calls
+    client = AsyncAnthropic(api_key=api_key, timeout=60 * 30)
 
     async def _safe_call(parts):
         try:
-            return await _call_claude_once_json(api_key, llm_model, temp, parts, client=client)
-        except Exception as exc:  # noqa: BLE001
+            return await _call_claude_once_json(client, llm_model, temp, parts)
+        except Exception as exc:      # noqa: BLE001
             logger.error("Claude task failed: %s", exc)
             return {"error": str(exc)}
 
