@@ -1,237 +1,133 @@
-# Skyscanner Brazilian Portuguese (pt-BR) – LQA Calibration & Style Guide
+# Portuguese (Brazil) Style Guide for Skyscanner
 
-## 1. Style Guide Summary
+## Critical Requirements
 
-### 1.1. Voice & Tone
-- Use **Brazilian Portuguese** — warm, conversational, friendly, not formal or stiff
-- Address users with **informal singular "você"** (not "tu" or "vós")
-- Write as if talking to a friend — simple, direct, helpful
-- **Put the traveller first:** Focus on benefits and advice for the user
-- **Creativity is key:** Translate meaning, not words; make it sound naturally Brazilian
-- Skyscanner = **Skyscanner** (keep in English, do not translate)
+*   **Tone priority**: Helpful > Geeky > Playful. If a conflict arises, choose **Helpful**.
+*   **Tone of voice**: Act like a knowledgeable, friendly travel pal. Use **"você" / "vocês"** (never "tu").
+*   **Active voice**: Use for all headlines and CTAs.
+*   **Clarity**: Prefer clarity over wordplay (rhyme, puns, alliteration). If it sounds unnatural, drop it.
+*   **Accuracy**: Never make unsubstantiated claims (e.g., "cheapest," "best," "guaranteed").
+*   **Format**: Use **sentence case** for titles and CTAs.
+*   **Placeholders**: Never translate, delete, or modify tags (e.g., `@@city@@`).
 
-### 1.2. Punctuation
+## Brand Voice
 
-| Mark | Usage |
-|------|-------|
-| Ampersand (&) | Translate as "e" unless part of a brand name (Dolce & Gabbana) |
-| Comma (,) | Use sparingly; avoid convoluted sentences |
-| Colon (:) | Do not capitalize word after colon on same line |
-| Semicolon (;) | Use sparingly; prefer simpler sentence structures |
-| Exclamation (!) | Use sparingly — English is more playful; remove if it sounds over-excited in Portuguese |
-| Quotation marks | Use double quotes ("") first; straight preferred over curly, but both acceptable |
-| Apostrophe | Prefer straight (') over curly ('), but both acceptable |
-| Slash (/) | **No spaces** before or after (US$ 100/noite, not US$ 100 / noite) |
+### 1. Playful
+- Conversational tone; treat the user like a friend.
+- Create rhythm; avoid flat/robotic text.
+- Use: Rhymes, alliteration, metaphors, vivid adjectives sparingly.
+- **Avoid**: "Fake-smart" corporate speak, over-the-top "LOL" humor, and stiff phrases.
+- **Constraints**: If a device (pun, rhyme) sounds forced in PT-BR, omit it. No "pinch-me-this-is-real" style long adjectives.
 
-- **Hyphens (-):** Follow "Acordo Ortográfico da Língua Portuguesa" rules
-- **En dashes (–):** Avoid; use commas, parentheses, or em dashes instead
-- **Em dashes (—):** Acceptable for parenthetical clauses
+### 2. Geeky
+- Enthusiastic but controlled; sound like a knowledgeable friend, not a lecturer.
+- Break complex data into simple steps.
+- Show expertise by explaining details humanely.
 
-### 1.3. Numbers & Dates
+### 3. Helpful
+- **Foundation**: Keep complex info simple, confusing situations clear, and overwhelming choices manageable.
+- **Bad news**: Drop playfulness, apologize sincerely once, focus on solutions. Avoid cold phrases like "We apologize for the inconvenience."
+- **Structure**: "Pose question, offer solution." Keep sentences short.
 
-| Context | Format |
-|---------|--------|
-| Numbers 0–10 in text | Write out (dois, cinco, dez) |
-| Numbers 11–999 | Use numerals (12, 350) |
-| 1,000+ (round/approximate) | Cardinal + word (3 mil, 20 milhões); use "mil" not "1 mil" |
-| 1,000+ (exact) | Use numerals with period separator (1.234, 18.318) |
-| Full date | domingo, 13 de janeiro de 2020 |
-| First day of month | Use ordinal: 1º de fevereiro de 2020 |
-| Abbreviated date | DD/M/YYYY, no leading zeros (8/4/2020) |
-| Time | 24-hour format with "h" (9h, 13h30, 23h59) |
+## Language-Specific Translation Guidelines
 
-### 1.4. Currencies
-- **Space** between symbol and value: `R$ 100` (not `R$100`)
-- Use **US$** for American dollars (not USD)
-- Currency symbol **before** value
+### Punctuation & Spacing
+- **Commas**: Do not overuse. Split long sentences to avoid confusion.
+- **Ellipsis**: Use only if it fits the playful tone; replace with a period/comma if it feels unnatural.
+- **Exclamation marks**: Use sparingly. Okay for CTAs/dialogue; remove if they make text sound overexcited.
+- **Quotes**: Always use straight double quotes (`"example"`) first. Use straight single quotes (`'example'`) only for nested terms.
+- **Ampersands (&)**: Translate to "e" (e.g., "Voos e hotéis"), unless part of a brand name (e.g., "Dolce & Gabbana").
+- **Colons**: Do not capitalize the word after a colon (unless a line break follows).
+- **Semicolons**: Avoid. Use to clarify only if absolutely necessary; never for short lists.
+- **Slashes**: No spaces before or after (e.g., `dispositivo móvel/celular`).
+- **Currency**: Use a non-breaking space between symbol and value (e.g., `US$ 100`).
 
-### 1.5. Addressing Users – "Você"
-- Always use **"você"** for "you" (not "tu" or "vós")
-- Use **"seu/seus/sua/suas"** for possessives (not "teu/teus")
-- When subject is repeated, **omit excess subjects** for readability
-  - ✓ "Você receberá um reembolso se reservar agora."
-  - ✗ "Você receberá um reembolso se você reservar agora."
+### Capitalization
+- **Titles/CTAs**: Sentence case only.
+- **Dates**:
+    - Full: "11 de janeiro de 2026" (Day of week lowercase unless start of sentence).
+    - 1st of month: "1º de fevereiro".
+    - Abbreviated: "11/1/2026" (No leading zeros, use slashes).
+- **Product/Feature names**: Consistent across UI and copy. Use sentence case.
 
-### 1.6. Active Voice
-- **Prefer active voice** over passive voice
-  - ✓ "O hotel cancelou sua reserva."
-  - ✗ "Sua reserva foi cancelada pelo hotel."
+### Addressing Users (T/V Policy)
+- Use **"você" / "vocês"** at all times.
+- Avoid "tu" unless required by strict legal text or specific marketing audiences.
 
-### 1.7. Names & Toponyms
-- **Skyscanner:** Keep in English (never translate)
-- **Brand/company names:** Keep in English unless established Portuguese name exists
-- **Country names:** Follow IBGE or Google Maps spellings
-- **Organization names:** Research official Brazilian names; if none exists, keep in English
-- **URLs:** Always keep in English; no spaces, lowercase, no special characters (é → e)
+### CTAs & Active Voice
+- **Active voice** is mandatory for headlines and CTAs.
+- Buttons:
+    - Single word: Infinitive (e.g., "Reservar").
+    - Multi-word: Imperative (e.g., "Reserve já").
 
-### 1.8. Units of Measure
-- Follow **INMETRO** guidelines (International System of Units)
+## Technical & Content Specifications
 
----
+### URLs
+- No spaces (use hyphens `-`).
+- All lowercase.
+- No special/extended characters.
 
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
+### Placeholders/Variables
+- Keep exactly as in source. 
+- Ensure grammatical correctness in PT-BR.
+- If a preposition issue arises, use a workaround (e.g., `@@city@@: os preços de hotéis baixaram`) rather than risking ungrammatical phrases.
 
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
+### Geo-terms & Airports
+- Use official local names (verify via Google Maps/Wikipedia).
+- **Do not duplicate**: If the name includes "Aeroporto", do not add it again (e.g., use "Aeroporto Charles de Gaulle", not "Aeroporto Aeroporto...").
 
----
+### Sustainability
+- **Avoid greenwashing**: No vague terms (green, eco, clean, planet-friendly).
+- **Be factual**: Base claims on data.
+- **Use comparatives**: Say "X emits 20% less carbon than Y", never "X is the greenest flight".
 
-### 2.1. Subject Omission Tolerance
+### Formatting & Style
+- **Inclusive language**: Avoid gendered assumptions, clichés, or stereotypes about age/ability.
+- **Anglicisms**: Use only if widely understood and expected (e.g., brand names).
+- **Abbreviations**: Explain on first use if not standard (e.g., airport codes).
+- **Emphasis**: Use bold/italics. **Never** use ALL CAPS.
 
-Portuguese naturally omits repeated subjects. **Accept subject omission when meaning is clear.**
+## Content Type Rules
 
-#### 2.1.1. Acceptable Subject Handling
+| Type | Tone/Strategy |
+| :--- | :--- |
+| **UI** | Short, clear, action-focused. One idea per string. |
+| **Marketing** | Fluid, inspirational, natural. Benefit-focused. |
+| **SEO** | Natural language, descriptive headings. No keyword stuffing. |
+| **Google Ads** | Concise, benefits-driven, direct CTA. No superlatives/clickbait. |
+| **App Store** | Simple, highlight benefits, no superlatives/guarantees. |
+| **Editorial/Blog** | Warmer, descriptive, factual, practical. |
+| **Emails/Push** | Short subject lines, clear next steps. |
+| **Legal/Policies** | Precise, neutral, no emotion/jokes. Accuracy first. |
 
-| Source | Acceptable Portuguese |
-|--------|----------------------|
-| `If you book now, you will receive...` | `Se reservar agora, você receberá...` (second "you" omitted) |
-| `You can find your booking in your account` | `Você pode encontrar sua reserva na sua conta` OR `Encontre sua reserva na sua conta` |
+## Important Prohibitions
+- **"Best" claims**: Do not use "best price" or "best deal" without a clear disclaimer or objective sorting mechanism. Use "epic prices" or "amazing deals" if subjective.
+- **Discounts**: Never claim "Skyscanner offers a discount". It is always a partner offering it. Use neutral phrasing like "You are offered a discount."
+- **Stereotypes**: Avoid any jokes or idioms relying on nationality, gender, age, or background.
 
-**Do NOT flag:**
-- Omission of repeated subjects/pronouns when meaning is preserved
-- Implicit subjects when verb conjugation makes subject clear
-- Restructuring that reduces redundancy
+## Glossary & Terminology Checklist
+- Use local equivalents for "deal", "trip", "offer" if natural.
+- **Do not** mix English/PT-BR in phrases (e.g., no "flight deals super baratos").
+- **Consistency**: Keep UI labels consistent (e.g., always "Alerta de Preço", never "Monitoramento de Preço").
 
----
+## Representative Examples (Do vs. Don't)
 
-### 2.2. Gender Agreement Tolerance
+**Formatting**
+- *Do*: "Garanta o carro que você mais deseja"
+- *Don't*: "Garanta o carro que você MAIS deseja" (Avoid ALL CAPS).
 
-Portuguese has grammatical gender. For unknown-gender placeholders, **accept reasonable defaults.**
+**Buttons**
+- *Do*: "Reservar" (Infinitive for 1 word)
+- *Don't*: "Reserve"
 
-#### 2.2.1. Acceptable Gender Strategies
+**Placeholders**
+- *Do*: "@@city@@: os preços de hotéis baixaram"
+- *Don't*: "Os preços de hotéis em @@city@@ baixaram" (Risk of grammatical error).
 
-| Strategy | Example |
-|----------|---------|
-| Masculine default for unknown users | `Bem-vindo, {{user}}!` |
-| Gender-neutral restructuring | `Boas-vindas, {{user}}!` instead of gendered greeting |
-| Using inclusive forms where natural | `Você está satisfeito(a)?` or `Está satisfeito?` |
+**Sustainability**
+- *Do*: "Este voo emite 20% menos carbono..."
+- *Don't*: "Este é o voo mais sustentável."
 
-**Do NOT flag:**
-- Masculine default for unknown-gender placeholders
-- Restructuring to avoid gender specification
-- Use of (a) or (o/a) suffixes for inclusivity
-
-**Only flag** if gender is **explicitly specified** in context and translation contradicts it.
-
----
-
-### 2.3. Meaning-Based Translation Tolerance
-
-The Style Guide explicitly encourages creative, non-literal translation that sounds naturally Brazilian.
-
-#### 2.3.1. Do NOT Flag as "Mistranslation"
-- Restructured sentences that preserve meaning
-- Idiomatic adaptations appropriate for Brazilian Portuguese
-- Simplification of complex English structures
-- Natural Portuguese word order (which may differ from English)
-
-#### 2.3.2. Do NOT Flag as "Omission/Addition"
-- Removal of excessive exclamation marks (English → Portuguese tone adjustment)
-- Adjustment of articles, pronouns, or connectors for natural flow
-- Implicit elements when clear from context
-- Addition of articles required in Portuguese but absent in English
-
-**Only flag** if core meaning is changed or lost.
-
----
-
-### 2.4. Punctuation & Formatting Tolerance
-
-#### 2.4.1. Do NOT Flag
-- Straight vs. curly quotation marks (" " vs. " ")
-- Straight vs. curly apostrophes (' vs. ')
-- Removal of exclamation marks when they sound unnatural in Portuguese
-- Minor variations in comma placement for natural flow
-- Use of em dash (—) vs. commas for parenthetical clauses
-
-#### 2.4.2. Only Flag If
-- Question becomes statement (? removed from question)
-- Punctuation creates meaning confusion
-- Spaces around slashes when there should be none (100 / noite → 100/noite)
-
----
-
-### 2.5. Number & Date Format Tolerance
-
-#### 2.5.1. Do NOT Flag
-- Written numbers 0–10 OR numerals, unless inconsistent within same text
-- Variations in large number formatting (3 mil vs. 3.000) for approximate values
-- Minor variations in date format within acceptable Brazilian conventions
-
-#### 2.5.2. Only Flag If
-- Date format is clearly incorrect or confusing
-- Numbers use wrong decimal/thousands separators (comma vs. period)
-- Time format is wrong (AM/PM instead of 24h format with "h")
-
----
-
-### 2.6. Terminology & Synonym Tolerance
-
-| English | Acceptable Portuguese Options |
-|---------|-------------------------------|
-| Flight | voo |
-| Book (verb) | reservar, fazer reserva |
-| Search | buscar, pesquisar, procurar |
-| Deal | oferta, promoção |
-| Trip | viagem, passeio |
-| Hotel | hotel |
-| Save (money) | economizar, poupar |
-| Save (bookmark) | salvar, guardar |
-| Traveller | viajante |
-| App | aplicativo, app |
-
-**Do NOT flag** reasonable synonym choices unless they change meaning or context makes one clearly wrong.
-
----
-
-### 2.7. Formality & Register Tolerance
-
-#### 2.7.1. Do NOT Flag
-- Conversational contractions and informal expressions appropriate for Skyscanner's tone
-- Simplification of formal English phrases into natural Portuguese equivalents
-- Use of common Brazilian expressions over literal translations
-
-#### 2.7.2. Examples of Acceptable Tone Adaptation
-
-| Formal/Literal (Avoid) | Natural/Conversational (Accept) |
-|------------------------|--------------------------------|
-| "Não hesite em entrar em contato" | "Fale com a gente" |
-| "Gostaríamos de informar" | "Queremos avisar" / "A gente quer avisar" |
-| "Providenciaremos assistência" | "Vamos ajudar" |
-
----
-
-### 2.8. Ampersand & Symbol Tolerance
-
-#### 2.8.1. Do NOT Flag
-- `&` translated as "e" in general text
-- `&` kept in brand names (Dolce & Gabbana)
-
-#### 2.8.2. Only Flag If
-- `&` used instead of "e" in regular text (outside brand names)
-- Brand name ampersand incorrectly changed to "e"
-
----
-
-### 2.9. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, wrong currency format |
-| **Major** | Core meaning changed, factual errors, wrong formality level for content type (legal vs. marketing) |
-| **Minor** | Style preferences, minor inconsistencies within acceptable range |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.8 |
-
----
-
-### 2.10. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Is this a **natural restructuring** for Brazilian Portuguese flow?
-2. ☐ Is the **subject omission** acceptable given verb conjugation clarity?
-3. ☐ Is the **core meaning preserved** despite structural changes?
-4. ☐ Does the Style Guide **explicitly prohibit** this choice?
-5. ☐ Would a native Brazilian Portuguese speaker find this **incorrect** (not just different)?
-6. ☐ Is this a **tone adjustment** appropriate for Brazilian vs. English sensibilities?
-
-**If meaning is preserved AND the structure sounds natural in Brazilian Portuguese → DO NOT FLAG**
+**Clarity**
+- *Do*: "Precisa de ajuda? Entre em contato..."
+- *Don't*: "Entre em contato... caso precise de ajude" (Poor grammar/typo).

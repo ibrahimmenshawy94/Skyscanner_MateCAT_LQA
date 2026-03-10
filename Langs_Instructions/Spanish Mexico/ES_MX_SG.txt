@@ -1,357 +1,117 @@
-# Skyscanner Spanish Mexico (es-MX) – LQA Calibration & Style Guide
+# es-MX Style Guide for Skyscanner
 
-## 1. Style Guide Summary
+## Critical Requirements
 
-### 1.1. Voice & Tone
-- Use **Mexican Spanish** — warm, friendly, direct, conversational
-- Address users with **informal "tú"** (not formal "usted")
-- Write as if talking to a friend — clear, honest, helpful
-- **Avoid repetitions:** Use synonyms, rephrase to avoid repeating words
-- **Avoid nominalization:** Use verbs over noun-heavy constructions
-- Skyscanner = **Skyscanner** (do not translate)
-
-### 1.2. Punctuation
-
-| Mark | Usage |
-|------|-------|
-| Commas | No comma before final conjunction in lists (no Oxford comma) |
-| Ellipsis (...) | No space before ellipsis |
-| Exclamation marks (¡!) | Use prudently — can sound overexcited in Spanish |
-| Quotation marks | Use English style "" (NOT angular «») |
-| Nested quotes | Use single quotes '' inside double quotes |
-| Period with quotes | Period goes OUTSIDE closing quotation mark |
-| Hyphens | Unusual in Spanish — avoid hyphenated words |
-| Dashes (—) | Common but don't overuse; prefer commas/parentheses |
-| Full stops | NO full stops for: buttons, menus, headers, titles |
-
-### 1.3. Capitalization
-
-| Element | Rule |
-|---------|------|
-| Titles and buttons | Do NOT capitalize every word (unlike English) |
-| Months and days | Lowercase (enero, lunes) unless starting sentence |
-| After colon | Usually lowercase |
-
-**Exceptions for capital after colon:**
-- After greeting in email/letter
-- After "Nota:"
-- When following text is a quote
-
-### 1.4. Numbers (MEXICO-SPECIFIC)
-
-| Context | Format |
-|---------|--------|
-| 0–10 in text | Written form preferred (but flexible based on context) |
-| 4-digit numbers | No separator (1000, 2500) |
-| 5+ digit numbers | Space separator (3 500 000) |
-| Decimals | **Period** (.) — NOT comma |
-| Large round numbers | Write out: "3 millones", "3 mil millones" |
-
-### 1.5. Dates & Time
-
-| Format | Example |
-|--------|---------|
-| Date | DD/MM/YYYY (14/04/2016) |
-| Full date | El jueves, 14 de abril de 2016 (lowercase) |
-| Time | 24-hour with colon, two digits, "h" symbol: **04:00 h** |
-| Time range | De las 08:00 h a las 14:00 h |
-| Time placeholders | Use "las" (covers all times except 01:00) |
-
-### 1.6. Currencies (MEXICO-SPECIFIC)
-
-| Format | Example |
-|--------|---------|
-| With ISO code | 123.45 MXN, 123.45 USD (code AFTER number with space) |
-| Decimals | Period (123.45) — NOT comma |
-
-- **Do NOT convert currencies** — keep source currency
-- **Do NOT use currency symbols** ($) — use ISO codes
-
-### 1.7. Symbols & Percentages
-
-| Symbol | Format |
-|--------|--------|
-| Percentage | **No space**: 95% (NOT 95 %) |
-| Units | Space after number: 10 km |
-| Degrees (no scale) | No space: 180º |
-| Degrees (with scale) | Space: 12 ºC |
-
-### 1.8. Active Voice
-- **Prefer active voice** over passive voice
-  - ✓ "Skyscanner te pedirá identificación."
-  - ✗ "Se te pedirá proporcionar identificación."
-
-### 1.9. Mexican Spanish Grammar
-
-#### Subjunctive Mood
-- Use **-ra ending** (not -se) for imperfect subjunctive
-  - ✓ "Si estuviera aquí..."
-  - ✗ "Si estuviese aquí..."
-
-#### Direct Object Pronouns (No Leísmo)
-- Use **"lo"** (not "le") for direct objects
-  - ✓ "Lo saludé rápidamente."
-  - ✗ "Le saludé rápidamente."
-
-#### Gerund Usage
-- **Avoid gerund at start of sentences** — use infinitive instead
-  - ✓ "Al ofrecer tu alojamiento..." / "Cómo buscar..."
-  - ✗ "Ofreciendo tu alojamiento..." / "Buscando..."
-
-#### Possessive Pronouns
-- **Avoid unnecessary possessive pronouns** — use articles instead
-  - ✓ "Carolin ha compartido el itinerario contigo."
-  - ✗ "Carolin ha compartido su itinerario contigo."
-
-### 1.10. Buttons & CTAs
-- **Multi-word CTAs:** Use imperative (Descubre, Reserva)
-- **Single-word buttons:** Use infinitive (Buscar, Participar)
-- **No full stops** on buttons/CTAs
-
-### 1.11. Anglicisms
-- **Avoid** when Spanish equivalent exists
-- **Accepted terms:** smartphone, laptop, marketing, bed and breakfast, hashtag, blog
-- **No italics** for accepted anglicisms
-
-### 1.12. Ampersand
-- **Avoid** — use "y" instead
-  - ✓ "Cambios y cancelaciones"
-  - ✗ "Cambios & cancelaciones"
-
-### 1.13. Units of Measure
-- Use **metric system** (convert from Imperial if source uses miles, inches, etc.)
-- Full form preferred; symbol if space limited
+**Voice Hierarchy**: Always prioritize **Helpful** > **Geeky** > **Playful**.
+**Tone**: Act as a "Geeky Travel Pal". Use informal **"tú"** (except in legal).
+**Accuracy**: Never make unsubstantiated claims (e.g., "cheapest ever," "best price"). Use disclaimers if using "best".
+**Sustainability**: Never use superlatives (e.g., "greenest," "sustainable"). Use comparative data (e.g., "emits 20% less carbon").
+**Discounts**: Skyscanner never offers discounts. Do not translate as "discount". Use "deals" or "price drops" if referring to price fluctuations; use "You are offered a discount" only when referring to partner offers.
 
 ---
 
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
+## Voice and Tone
 
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
-
----
-
-### 2.1. Quotation Mark Tolerance (MEXICO-SPECIFIC)
-
-Mexican Spanish uses **English-style quotation marks**, NOT angular.
-
-#### 2.1.1. Acceptable Quotation Styles
-
-| Style | Accept? |
-|-------|---------|
-| English double "" | ✓ Preferred for Mexico |
-| Angular «» | ✗ Flag as error (Spain style) |
-| Single '' for nested | ✓ Correct |
-
-#### 2.1.2. Period Placement
-- Period goes **OUTSIDE** closing quotation mark
-  - ✓ `Y después dijo: "No lo pienso hacer".`
-  - ✗ `Y después dijo: "No lo pienso hacer."`
-
-**Do NOT flag** English-style quotation marks — they are CORRECT for Mexico.
+- **Helpful**: Foundation of all copy. Prioritize clarity. Simplify complex information. Use "pose question then offer solution" structure.
+- **Geeky**: Share data/patterns humanely. Enthusiastic but controlled.
+- **Playful**: Use for engagement, never at the expense of clarity.
+    - *Tools*: Use rhyme, alliteration, metaphors, vivid adjectives.
+    - *Avoid*: Corny puns, "fake-smart" corporate jargon, stiff/overly formal language, "LOL-funny" attempts.
+- **Conflict Resolution**: If a playful device sounds unnatural or forced in Spanish, skip it.
 
 ---
 
-### 2.2. Number Format Tolerance (MEXICO-SPECIFIC)
+## Translation & Formatting Guidelines
 
-Mexican Spanish uses **period for decimals** (different from Spain).
+### URLs
+- **Format**: All lowercase. No spaces (use hyphens `-`). No special/extended characters (convert to basic Latin).
 
-#### 2.2.1. Acceptable Number Formats
+### Placeholders & Variables
+- **Handling**: Never translate, delete, or change tags like `{{|roomCategory|}}`.
+- **Order**: Rearrange tags for correct Spanish syntax.
+- **Gender**: If a placeholder noun requires specific gender (e.g., *convertible* vs *miniván*), use neutral workarounds: *"Puedes rentar estos vehículos: {{|car_type|}}"*.
 
-| Format | Accept? |
-|--------|---------|
-| Decimal with period (123.45) | ✓ Correct for Mexico |
-| Decimal with comma (123,45) | ✗ Flag (Spain style) |
-| Space thousands (3 500 000) | ✓ Correct |
-| Period thousands (3.500.000) | ✗ Flag |
-| Comma thousands (3,500,000) | ✗ Flag |
-| No separator for 4-digit (1000) | ✓ Correct |
+### Punctuation & Spacing
+- **Commas**: No comma before conjunctions (*y, e, o, ni*) in enumerations unless using semicolons.
+- **Ellipsis**: No spaces before ellipsis.
+- **Quotes**: Use English double quotes `""`. Use single quotes `''` for nested quotes. Never use double prime symbol (″) or angular quotes («»).
+- **Exclamation Marks**: Use sparingly. Do not use multiple (e.g., `!!`). Ignore extra exclamation marks in source.
+- **Full Stops**: No periods in headers, buttons, menus, or single-word lists.
+- **Dashes**: Use correctly (equivalent to parentheses); do not overuse.
 
-**Do NOT flag** period as decimal separator — it is CORRECT for Mexico.
+### Capitalization
+- **Style**: Use sentence case. Avoid Title Case (except for specific Marketing/Ads).
+- **Months/Days**: Lowercase unless starting a sentence.
+- **Colons**: Do not capitalize after colon unless:
+    1. Beginning of email/letter after greeting.
+    2. After "Nota:".
+    3. Introducing a quote.
 
----
-
-### 2.3. Grammar Tolerance (MEXICO-SPECIFIC)
-
-#### 2.3.1. Subjunctive Forms
-| Form | Accept? |
-|------|---------|
-| -ra ending (estuviera) | ✓ Correct for Mexico |
-| -se ending (estuviese) | ✗ Flag (Spain style) |
-
-#### 2.3.2. Direct Object Pronouns
-| Usage | Accept? |
-|-------|---------|
-| "lo" for direct object (Lo saludé) | ✓ Correct for Mexico |
-| "le" for direct object (Le saludé) | ✗ Flag (leísmo - Spain) |
-
-**Do NOT flag** -ra subjunctive or "lo" direct objects — they are CORRECT for Mexico.
+### Inclusive Language
+- Avoid stereotypes, gendered assumptions, or labels.
+- Prefer neutral structures: *"Quienes viajan con niños..."* instead of *"Los viajeros que vuelan con niños..."*.
+- Masculine neutral is acceptable if natural; do not force neutrality.
 
 ---
 
-### 2.4. Punctuation Tolerance
+## Grammar & Mechanics
 
-#### 2.4.1. Do NOT Flag
-- Exclamation marks added or removed for appropriate tone
-- No comma before final conjunction in lists (no Oxford comma)
-- No full stop on buttons, CTAs, titles, headers
-- Period outside closing quotation mark
-- No space before ellipsis
-
-#### 2.4.2. Only Flag If
-- Question becomes statement (¿? removed)
-- Oxford comma used (comma before "y/o" in list)
-- Full stop on button/CTA
-- Period inside quotation mark
+- **Anglicisms**: Avoid unless widely adopted (e.g., *Smartphone, Laptop, Marketing, bed and breakfast, Hashtag, blog*). Do not italicize these.
+- **Abbreviations/Acronyms**: Use only if widely understood. Write full term + (Abbreviation) on first mention. Do not abbreviate dates unless forced by character limits.
+- **CTAs & Active Voice**: Always use active voice. Use imperative for buttons; use infinitive for single-word buttons.
+- **Transliteration**: Use official local names for places/airports. Do not add "Airport" to names (it is added via placeholder).
+- **Sustainability**: Avoid "green," "eco," "clean," "planet-friendly." Base claims on measurable data (e.g., *"emite un 20% menos de carbono"*).
 
 ---
 
-### 2.5. Capitalization Tolerance
+## Content-Type Specifics
 
-#### 2.5.1. Do NOT Flag
-- Lowercase titles/buttons (correct for Spanish)
-- Lowercase months/days (enero, lunes)
-- Lowercase after colon (in most contexts)
-- Title case NOT matching English source (this is CORRECT)
-
-#### 2.5.2. Only Flag If
-- Missing capital at sentence start
-- Proper nouns in lowercase
-- Capitalized months/days mid-sentence
+- **UI**: Short, clear, action-focused. One idea per string.
+- **Marketing**: Natural, fluid, inspirational. Focus on benefits (saving time/money/effort).
+- **SEO**: Natural language (how users search). Avoid keyword stuffing.
+- **Google Ads**: Very concise. Strict character limits. No clickbait or superlatives.
+- **Legal/Policies**: Precise, neutral, no emotion/jokes. No interpretation of source.
+- **Emails/Push**: Short, helpful, inspirational. Clear next steps.
 
 ---
 
-### 2.6. Percentage & Symbol Tolerance
+## Cultural Sensitivity: Mexico
 
-#### 2.6.1. Do NOT Flag
-- No space before percentage: 95%
-- Space before other units: 10 km
-- Degree without space when no scale: 180º
-- Degree with space when scale: 12 ºC
-
-#### 2.6.2. Only Flag If
-- Space before percentage (95 %)
-- No space before units (10km)
-- Missing "h" in time format when required
+### Emoji/Symbol Policy
+- Use sparingly. Never replace key words with emojis.
+- **Forbidden Emojis (Sexual/Condescending)**:
+    - Sexual/Double Entendre: `🍆` (eggplant), `🍑` (peach), `💦` (drops), `👅` (tongue), `😏` (smirking face).
+    - Aggressive/Condescending: `😈` (smiling devil), `😬` (tense/grimace), `😂/🤣` (laughing tears), `🙄` (rolling eyes), `😜` (winking tongue), `🤪` (crazy face), `🤭` (hand over mouth).
 
 ---
 
-### 2.7. Formality Tolerance
+## Brand Specifics
 
-#### 2.7.1. Do NOT Flag
-- Consistent use of informal "tú" (this is CORRECT)
-- Conversational tone
-- Definite articles instead of possessive pronouns
-
-#### 2.7.2. Only Flag If
-- Mixed formality (tú/usted in same context)
-- Formal "usted" in general content
+- **Skyscanner Brand Name**: Never translate or adapt. Do not add articles unless necessary.
+- **"Best"**: Do not claim "best" unless supported by a disclaimer explaining the sorting criteria. Use "epic prices" or "amazing deals" as subjective alternatives.
+- **"Discount"**: Never translate as "descuento" unless referring to a specific partner offer. Use "deals" (ofertas) for price drops.
 
 ---
 
-### 2.8. Verb Form Tolerance
+## Quick Reference Dictionary
 
-#### 2.8.1. Buttons & CTAs
-
-| Button Type | Acceptable Form |
-|-------------|-----------------|
-| Single word | Infinitive (Buscar, Ver) |
-| Multi-word | Imperative (Descubre esta función) |
-| Either | Both acceptable in context |
-
-#### 2.8.2. Gerund Handling
-- Infinitive or noun replacing English gerund at sentence start
-  - ✓ "Al buscar..." / "Cómo buscar..."
-  - ✗ "Buscando..." (at start of heading)
-
-**Do NOT flag** infinitive/imperative variation if consistent within same content type.
+| Term / Context | Correct es-MX Usage |
+| :--- | :--- |
+| **"Best"** | Use with disclaimer or replace with "increíble/épico". |
+| **"Discount"** | Never use for Skyscanner-only search results. Use "ofertas". |
+| **"Sustainability"** | Use comparatives (e.g., "menos carbono"). No absolutes. |
+| **"You"** | Always use "tú" (informal). |
+| **Buttons** | Infinitive (e.g., "Reservar"). |
+| **Enumerations** | No comma before "y/o" unless semicolon is used. |
+| **Dates** | No capitalization (lunes, octubre). |
 
 ---
 
-### 2.9. Style Tolerance
-
-#### 2.9.1. Do NOT Flag
-- Removed unnecessary possessive pronouns
-- Restructured to avoid nominalization
-- Synonyms used to avoid repetition
-- Active voice replacing passive
-- Rephrasing to avoid gerund at sentence start
-
-#### 2.9.2. Only Flag If
-- Meaning changed by restructuring
-- Incorrect possessive usage
-- Excessive/awkward repetition
-
----
-
-### 2.10. Anglicism Tolerance
-
-#### 2.10.1. Accepted Without Flagging
-- smartphone, laptop, marketing, bed and breakfast, hashtag, blog
-- Technical terms without good Spanish equivalent
-- No italics on accepted anglicisms
-
-#### 2.10.2. Only Flag If
-- Unnecessary anglicism when clear Spanish equivalent exists
-- Italics on accepted anglicisms (should not be italicized)
-
----
-
-### 2.11. Currency Tolerance
-
-#### 2.11.1. Do NOT Flag
-- ISO code after number: 123.45 MXN, 123.45 USD
-- Period for decimals in currency
-- Source currency kept (not converted)
-
-#### 2.11.2. Only Flag If
-- Currency symbol used instead of ISO code ($100 instead of 100 MXN)
-- ISO code before number (USD 123.45)
-- Comma used for decimals in currency (123,45)
-
----
-
-### 2.12. Terminology & Synonym Tolerance
-
-| English | Acceptable Mexican Spanish Options |
-|---------|-----------------------------------|
-| Flight | vuelo |
-| Book (verb) | reservar, hacer una reserva |
-| Search | buscar |
-| Deal | oferta, promoción |
-| Trip | viaje, escapada |
-| Hotel | hotel, alojamiento |
-| Save (money) | ahorrar |
-| Save (bookmark) | guardar |
-| App | aplicación, app |
-| Parking | estacionamiento (NOT aparcamiento) |
-
-**Do NOT flag** reasonable synonym choices or Mexico-specific vocabulary.
-
----
-
-### 2.13. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, wrong decimal separator (comma), leísmo |
-| **Major** | Core meaning changed, factual errors, angular quotation marks, -se subjunctive |
-| **Minor** | Style preferences, minor inconsistencies within acceptable range |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.12 |
-
----
-
-### 2.14. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Are **quotation marks** English-style "" (not angular «»)?
-2. ☐ Is the **decimal separator** a period (not comma)?
-3. ☐ Is the **subjunctive** using -ra form (not -se)?
-4. ☐ Are **direct objects** using "lo" (not "le")?
-5. ☐ Is **percentage** written without space (95%)?
-6. ☐ Is the **informal "tú"** register consistently used?
-7. ☐ Does **capitalization** follow Spanish rules (not English)?
-8. ☐ Is the **core meaning preserved** despite structural changes?
-9. ☐ Would a native Mexican Spanish speaker find this **incorrect** (not just different)?
-
-**If meaning is preserved AND the structure follows Mexican Spanish conventions → DO NOT FLAG**
+## Quality Assurance Checklist
+- [ ] Is tone "Helpful" first?
+- [ ] Did I remove passive voice?
+- [ ] Are tags preserved exactly?
+- [ ] Is punctuation simplified (no periods in buttons)?
+- [ ] Is the "discount" constraint respected?
+- [ ] Are sexual/condescending emojis removed?
+- [ ] Is sentence case used for titles?

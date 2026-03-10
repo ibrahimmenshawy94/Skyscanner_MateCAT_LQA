@@ -1,205 +1,102 @@
-# Skyscanner Arabic (AR) – LQA Calibration & Style Guide
+# AR Style Guide for Skyscanner
 
-## 1. Style Guide Summary
+## Critical Requirements
+- **Tone Hierarchy**: Prioritize **Helpful** first, followed by **Geeky** (data-driven, expert) and **Playful** (human, conversational). If a conflict arises, prioritize **Helpful**.
+- **Placeholders/Variables**: **MUST NOT be translated, deleted, or changed**. Keep exactly as in source (including spacing before/after tags).
+- **URLs**: **Must be lowercase, contain no spaces (use hyphens), and use only Latin characters**.
+- **Accuracy**: Never use unsubstantiated superlatives (e.g., "best", "cheapest ever"). Use "best" only with disclaimers or subjective terms like "epic prices".
+- **Sustainability**: Never use greenwashing terms (e.g., "eco", "green", "guilt-free"). Use comparatives ("X reduces emissions by Y% compared to Z") rather than absolutes.
+- **Brand**: The name **Skyscanner** must **never** be translated or adapted. Do not add articles unless required by local grammar.
 
-### 1.1. Voice & Tone
-- Use **Modern Standard Arabic (MSA)** — warm, accessible, not bureaucratic
-- Address users with **second-person masculine singular (أنت)** unless context requires otherwise
-- Write as if speaking to a friend — simple, direct, friendly
-- **Creativity is key:** Translate meaning, not words; make it sound originally Arabic
-- Skyscanner = **سكاي سكانر**
+## Tone and Voice
+- **Helpful**: Focus on traveller needs. Be honest, upfront, and apologize sincerely (no "we apologize for the inconvenience"). Use "pose question → offer solution" format.
+- **Geeky**: Enthusiastic but controlled. Love data/details but explain in human terms. Break complex info into simple steps.
+- **Playful**: Human, conversational, natural. 
+    - *Tools*: Use rhyme, alliteration, metaphors if they occur naturally.
+    - *Restrictions*: Avoid puns, corporate speak, stiff phrases, and "LOL-funny" attempts.
+    - *Clarity*: If wordplay compromises meaning or sounds forced in Arabic, **discard it**.
 
-### 1.2. Punctuation
-| Mark | Arabic Form | Usage |
-|------|-------------|-------|
-| Comma | ، | Between clauses (points opposite to English) |
-| Question mark | ؟ | End of questions |
-| Full stop | . | End of declarative sentences |
-| Quotation marks | " " | Punctuation goes AFTER closing mark |
+## Localization Strategy
+- **Meaning over literalism**: Prioritize natural phrasing and local culture over matching English syntax.
+- **Inclusive Language**: Avoid stereotypes (gender, age, background). Use neutral, precise terms. Do not assume user demographics.
+- **Anglicisms**: Avoid unless widely accepted (e.g., specific brand names).
+- **Abbreviations**: Use only if widely understood. Write full term + (abbr) on first mention.
 
-- **No space** before punctuation marks
-- **Don't overuse** exclamation marks — use period/comma/colon instead where appropriate
+## Technical Guidelines
 
-### 1.3. Diacritics (تشكيل)
-- **Avoid** unless needed for clarity
-- Use for passive voice verbs on first and second-to-last letters when necessary (يُحتمَل)
-- Tanween goes on letter **before** alif (مغلفًا not مغلفاً)
-- Shadda is optional unless needed for disambiguation
+### URLs
+- **Format**: `lowercase`, `hyphen` separator, no special chars.
+- **Encoding**: Keep entirely in Latin characters (do not transliterate/translate URL content).
 
-### 1.4. Numbers & Dates
-- Use **Arabic numerals** (1, 2, 3) — NOT Hindi numerals (١، ٢، ٣)
-- Date format: **Day/Month/Year** (23/4/1999)
-- Time: **12-hour format** preferred
-- Month names: **Arabized Western** (يناير، فبراير، مارس) — NOT Levantine (كانون، شباط، آذار) or North African (غشت، يوليه)
+### Placeholders & Tags
+- **Handling**: Keep in exact source order. Ensure natural grammar around the tag. Add spaces before/after tags if needed to prevent text concatenation.
+- **Validation**: If the tool renders placeholders as text, do not translate the content inside them.
 
-### 1.5. Plurals & Number Agreement
-Arabic has complex plural rules based on number ranges:
+## Arabic Language Guidelines
 
-| Count | Form | Example |
-|-------|------|---------|
-| 1 | Singular | رحلة واحدة |
-| 2 | Dual | رحلتان/رحلتين |
-| 3-10 | Plural (جمع قلة) | رحلات |
-| 11+ | Singular (تمييز) | رحلة |
+### Punctuation and Spacing
+- **Comma (،)**: Arabic comma points upward (opposite of English `,`). No space before, one space after. Never start a line with it.
+- **Question Mark (؟)**: Must use the Arabic version (؟), not the English (?).
+- **Exclamation Marks**: Use sparingly. Only for surprise/amazement, not for "important" or "warning". Prefer periods/colons.
+- **Quotation Marks (" ")**: Enclose direct speech, titles, UI texts, and proper nouns (compensates for lack of capitals). No space between quote and text. 
+- **Hyphens/Dashes**:
+    - **Dialogue**: Use dash (—) at line start for speaker changes.
+    - **Lists/Ranges**: Use hyphen/dash for number separation (e.g., 1- الأول or 18-28). Avoid to join words or break words at line ends.
+- **Full Stops**: No space before, one space after.
 
-**For unknown placeholders**, use workarounds:
-- Structure: `عدد النتائج: {{0}}` or `{{0}} من النتائج`
-- Predictable small ranges: Use جمع قلة (e.g., مقاعد for car seats)
+### Formatting & Dates
+- **Capitalization**: Avoid Title Case. Use Sentence Case (unless otherwise standard).
+- **Dates**: Day/Month/Year (DD/MM/YYYY).
+- **Months**: Use Arabized Western names: (يناير، فبراير، مارس، أبريل، مايو، يونيو، يوليو، أغسطس، سبتمبر، أكتوبر، نوفمبر، ديسمبر).
+- **Time**: 12-hour clock + period indicators (صباحًا/مساءً).
 
-### 1.6. Gender Handling
-- Default: **Masculine** for general audiences
-- For gender-neutral writing:
-  - Use nominal sentences (nouns instead of gendered verbs)
-  - Omit pronouns where meaning is preserved
-  - Use passive voice cautiously
-  - CTAs: Use kasra form (اشترِ) for gender-neutral imperatives
+### Address Policy
+- **Formality**: Arabic lacks direct T/V distinction. Convey politeness via pronouns and specific phrases. Maintain a consistent, helpful friend tone.
 
-### 1.7. Toponyms & Names
-- **Known places:** Use common Arabic version (البندقية for Venice)
-- **Unknown places:** Keep in English
-- **City names:** Only translate if common Arabic name exists
-- **Brand names:** Keep in English (except Skyscanner → سكاي سكانر)
-- **URLs:** Always keep in English
+## Linguistic Guidelines
 
----
+### Toponyms and Transliteration
+- **Popular places**: Translate to the commonly known version (e.g., Eiffel Tower → برج إيفل).
+- **Unknown places**: Keep untranslated or transliterate if standard.
+- **City names**: Do not translate unless a standard Arabic version exists. Keep as source if searchable/unknown.
+- **Historical Sites**: Use standard Arabic translations (e.g., Great Wall of China → سور الصين العظيم).
+- **Airport Names**: 
+    - **Structure**: Transliterate proper names (Miami → ميامي), translate descriptive terms (International → دولي).
+    - **Avoid Duplication**: Do not add "airport" if already in the name; translate as "مطار [Name]".
+    - **Standard**: Follow IATA/ICAO codes.
 
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
+### Content Type Rules
+- **UI**: Short, clear, action-focused. One idea per string.
+- **Marketing**: Natural, fluid, inspirational. Focus on traveller benefits (saving time/money).
+- **SEO**: Natural language, no keyword stuffing. Descriptive titles.
+- **Google Ads**: Concise, benefit-driven, direct CTA. Avoid clickbait.
+- **App Store**: Highlight features (search, compare). No superlatives.
+- **Editorial/Blog**: Factual but warm. Balanced advice.
+- **Legal/Policies**: Precise, neutral. No idioms/jokes.
+- **Emails/Push**: Short subject lines, clear next steps.
 
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
+### Sustainability
+- **Principles**: Use comparatives (not absolutes). Use measurable data. 
+- **Avoid**: "Green", "eco", "natural", "non-toxic", "clean", "planet-friendly", "guilt-free".
+- **Imagery**: Do not reinforce nature-themed metaphors that imply aviation is harmless.
 
----
+## Brand & Feature Naming
+- **Skyscanner**: Never translate the brand name.
+- **Feature Names**: Focus on clarity. If a literal translation is confusing (e.g., "Packages"), use the local equivalent (e.g., "Package Holidays"). 
+- **Checklist for names**:
+    1. Scanability/Length.
+    2. Clarity of function.
+    3. Local familiarity (check competitors).
 
-### 2.1. Placeholder & Number Handling Tolerance
+## Glossary/Usage Reminders
+- **Discount**: **Never** use "discount" (خصم) unless specifically referring to a partner offer. Use "deal", "price drops", or "offers" for fluctuations.
+- **Best**: Avoid superlatives. If English says "best", verify if it is an objective claim. If subjective, use terms like "epic prices" or "amazing deals".
+- **Active Voice**: Use for all CTAs and headlines. Use imperative forms (e.g., سجِّل الدخول, احجز الآن).
 
-Arabic's complex number agreement makes literal placeholder translations often impossible. **Accept creative restructuring.**
-
-#### 2.1.1. Acceptable Workarounds for Number Placeholders
-
-| Source | Acceptable Arabic Approaches |
-|--------|------------------------------|
-| `{{0}} results` | `عدد النتائج: {{0}}` OR `{{0}} من النتائج` |
-| `{{0}} flights` | `رحلات طيران: {{0}}` OR `{{0}} رحلة طيران` |
-| `{{0}} nights` | `{{0}} ليالٍ` OR `عدد الليالي: {{0}}` |
-
-**Do NOT flag** if the translator:
-- Restructures to avoid number-noun agreement issues
-- Uses `عدد الـ` (number of) + noun construction
-- Uses `من الـ` (of the) construction
-- Places the placeholder in a position that works for all number forms
-
-#### 2.1.2. Do NOT Flag as "Grammar Error"
-- Plural form choices for unknown placeholder values
-- Singular form used where translator anticipated 11+ values
-- جمع قلة used where translator anticipated 3-10 values
-
-**Only flag** if the structure would be **incorrect for ALL possible values**.
-
----
-
-### 2.2. Gender Agreement Tolerance
-
-Gender agreement with placeholders (names, user references) is inherently challenging.
-
-#### 2.2.1. Acceptable Gender Strategies
-
-| Strategy | Example |
-|----------|---------|
-| Masculine default | Standard for general audiences |
-| Passive voice | `تم حجز رحلة بواسطة {{user}}` instead of `حجز {{user}} رحلة` |
-| Nominal sentences | Using nouns instead of gendered verbs |
-| Omitting pronouns | `بعض الملاحظات عن الرحلة` instead of `عن رحلته/رحلتها` |
-
-**Do NOT flag:**
-- Masculine form for unknown-gender placeholders
-- Passive voice used to avoid gender agreement issues
-- Restructuring that avoids gendered verbs/pronouns
-
-**Only flag** if gender is **explicitly specified** in context and translation contradicts it.
-
----
-
-### 2.3. Meaning-Based Translation Tolerance
-
-The Style Guide explicitly encourages creative, non-literal translation.
-
-#### 2.3.1. Do NOT Flag as "Mistranslation"
-- Restructured sentences that preserve meaning
-- Idiomatic adaptations appropriate for Arabic
-- Omission of elements that sound unnatural if translated literally
-- Addition of elements required for natural Arabic expression
-
-#### 2.3.2. Do NOT Flag as "Omission/Addition"
-- Articles, pronouns, or connectors adjusted for Arabic flow
-- Implicit subject/object when clear from context
-- Cultural adaptations that convey the same message
-
-**Only flag** if core meaning is changed or lost.
-
----
-
-### 2.4. Punctuation & Formatting Tolerance
-
-#### 2.4.1. Do NOT Flag
-- Minor variations in comma/period placement
-- Arabic (،) vs English (,) comma — both may appear in mixed text
-- Presence/absence of diacritics (unless creating ambiguity)
-- Different quotation mark styles
-
-#### 2.4.2. Only Flag If
-- Question becomes statement (؟ removed from question)
-- Punctuation creates meaning confusion
-
----
-
-### 2.5. Terminology & Synonym Tolerance
-
-| English | Acceptable Arabic Options |
-|---------|---------------------------|
-| Flight | رحلة طيران، رحلة جوية |
-| Book | احجز، قم بالحجز |
-| Search | ابحث، بحث |
-| Deal | عرض، صفقة |
-| Trip | رحلة، سفرة |
-| Hotel | فندق |
-| Save | احفظ، وفّر (context-dependent) |
-
-**Do NOT flag** reasonable synonym choices unless they change meaning.
-
----
-
-### 2.6. Transliteration & Name Handling Tolerance
-
-#### 2.6.1. Do NOT Flag
-- Known toponyms in their common Arabic form
-- Unknown places kept in English
-- Brand/airline names in English
-- Transliterated names that follow Arabic phonetic conventions
-
-#### 2.6.2. Only Flag If
-- Well-known Arabic name exists but English was used
-- Transliteration is misspelled or unrecognizable
-
----
-
-### 2.7. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags |
-| **Major** | Core meaning changed, factual errors, incorrect directional logic |
-| **Minor** | Style preferences, minor inconsistencies within acceptable range |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.6 |
-
----
-
-### 2.8. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Is this a **creative restructuring** to handle Arabic grammar constraints?
-2. ☐ Would the translation work for **all possible placeholder values**?
-3. ☐ Is the **core meaning preserved** despite structural changes?
-4. ☐ Does the Style Guide **explicitly prohibit** this choice?
-5. ☐ Would a native Arabic speaker find this **incorrect** (not just different)?
-
-**If meaning is preserved AND the structure handles Arabic grammar constraints → DO NOT FLAG**
+## Quality Control (Don'ts)
+- Do not mix English/Local words in a phrase (e.g., "flight deals super baratos").
+- Do not use clickbait (e.g., "You won't believe this offer!!!").
+- Do not use emojis to replace keywords or in serious/legal content.
+- Do not make assumptions about traveler groupings or labels.
+- Do not use internal acronyms (e.g., PNR) without explanation.
+- Do not translate meta-labels if they are system variables.

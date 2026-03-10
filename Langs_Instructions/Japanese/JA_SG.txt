@@ -1,71 +1,133 @@
-# Skyscanner Japanese (JA-JP) – LQA Calibration & Style Guide
+# JA Style Guide for Skyscanner
 
-## I. CRITICAL LQA CALIBRATION (READ FIRST)
-**You must prioritize Functional Integrity and Logic over Stylistic Preference.** Use the following hierarchy to determine errors:
+## Critical Requirements
 
-### 1. LOGIC & MATH (Highest Severity - ALWAYS FLAG)
-- **Directional Logic (Critical):** Check for inverted meanings in variables.
-  - *Example:* "From {City}" (Origin) vs. "To {City}" (Destination). Translating "From Tokyo" as "To Tokyo" (東京行き) is a **Major** error.
-- **Logic Inversion:** Watch for inverted conditions.
-  - *Example:* "Cancel up to 24h before" ≠ "Cancel after 24h" (予約後).
-  - *Example:* "One day later" (+1 Day) ≠ "One day late" (Delay).
-- **Dynamic Price Integrity:** Do NOT accept the addition of intensifiers like "only" or "just" next to a dynamic `{{price}}` variable unless present in the source.
-- **UI Functionality:** Ensure translation matches user state.
-  - *Example:* "Sign up" (Newsletter) ≠ "登録" (Register Account) if logged in. Use "購読".
-  - *Example:* "Save" (Action) ≠ "Check" (Action) unless functionality is identical.
-
-### 2. TERMINOLOGY & GLOSSARY (Strict Enforcement)
-- **Adherence:** If `tb_matches` provides a term, you **MUST** flag deviations.
-- **Katakana Compounds:** Use a Nakaguro (・) for compound proper nouns (e.g., `シアトル・タコマ`, `トロント・ピアソン`). Do NOT use spaces or direct concatenation.
-- **Product Names:** "Explore Everywhere" = "すべての場所から探す".
-- **Technical Terms:**
-  - **AdTech:** "Header Bidding" = "Header Bidding" (Keep English) or "ヘッダービディング".
-  - **Legal:** "Opt-out" = "オプトアウト" or "無効化".
-
-### 3. ANTI-FALSE POSITIVE RULES (Do NOT Flag)
-**Do NOT flag the following scenarios. These are valid variations, not errors:**
-- **Particle Nuance:** Do NOT flag subtle particle choices unless they create a grammatical error.
-  - *Example:* `ホテルの滞在` (Hotel's stay) vs `ホテルでの滞在` (Stay at hotel). Both are acceptable noun phrases in UI.
-- **Politeness Level (Desu/Masu):** Only flag inconsistencies (mixing Plain and Polite forms in the *same* list/screen). Do not flag "Polite" forms as "Bureaucratic" unless the brand guide explicitly demands "Plain" style for that specific component.
-- **Synonyms:** "Search" = `検索` or `探す`. Both are acceptable.
+*   **Tone Hierarchy**: **Helpful** > **Playful** > **Geeky**. If a choice must be made, prioritize **Helpful**.
+*   **Sustainability Claims**: **Avoid greenwashing**. Use comparatives (e.g., "emits 20% less carbon"); do not use "sustainable", "eco", "green", "environmentally friendly", "clean", or "guilt-free".
+*   **Accuracy/Claims**: Do not use superlatives like "best", "cheapest", or "guaranteed" unless verifiable with a disclaimer. Never offer discounts; refer to "price drops" or "deals".
+*   **Placeholders**: Never translate or delete. **Do not add spaces** before/after tags in Japanese.
+*   **URL Policy**: Keep English exactly as is. No special characters, spaces, or non-Latin scripts (use hyphens for separation).
 
 ---
 
-## II. PRODUCT & WRITING GUIDELINES
+## 1. Tone of Voice
 
-### Tone & Style
-- **Goal:** Natural, conversational Japanese; use friendly 丁寧語 (です/ます).
-- **Avoid:** Overly stiff/translation-ese (Literal translation of "You" like `あなた`).
-- **Register:**
-  - *Standard:* Use Polite form (Desu/Masu) for body copy and messages.
-  - *UI Labels:* Use Noun phrases or Suru-verbs (e.g., `検索`, `保存する`).
+### 1.1 Playful
+*   **Goal**: Conversational, light, natural energy. 
+*   **Rules**: Avoid stiff corporate jargon, excessive humor, or "fake-smart" phrasing. 
+*   **Techniques**: Use metaphors or vivid adjectives only if natural in Japanese. If a device sounds unnatural, do not use it.
+*   **Clarity**: Prioritize clarity over wordplay.
 
-### Formatting & Conventions
-- **Punctuation:** Use full-width punctuation (`。`, `、`). No spaces between Japanese characters.
-- **Numbers:** Half-width Arabic numerals (`1, 2, 3`). Use commas for thousands (`1,000`).
-- **Date/Time:** `2025年11月`, `24時間`.
-- **Katakana:** Avoid excessive Katakana if a natural Japanese term exists.
+### 1.2 Geeky
+*   **Goal**: Enthusiastic, knowledgeable friend.
+*   **Rules**: Break complex info into simple steps. Keep tone controlled, not lecturing.
 
-### Content Types
-- **UI/CTAs:** Concise, action-oriented. `料金を表示`, `直行便を表示`.
-- **Imperatives:** Translate "Find X" as "Xを見つける" or "Xを探す" (Volitional/Active) rather than imperative commands.
+### 1.3 Helpful
+*   **Goal**: Foundation of all communication.
+*   **Rules**:
+    *   Put traveler needs first. Start with benefit/instruction.
+    *   Split long sentences into 2+ short ones if it improves flow.
+    *   **Bad news/Apologies**: Drop playfulness. Apologize sincerely (once). Focus on solutions, not feelings. Avoid cold phrases like "We apologize for the inconvenience."
 
 ---
 
-## III. ERROR REPORTING GUIDE (Impact-Driven)
+## 2. Localization & Formatting Rules
 
-- **Critical/Major Error:**
-  - Logic inversion (20% off vs 80% price).
-  - Wrong Preposition on Variables (From/To).
-  - Functional Mismatch (Register vs Subscribe).
-  - Wrong Technical Term (AdTech).
-  - Broken/Missing Placeholders.
-  - Inconsistent Katakana spacing in Proper Nouns (Missing Nakaguro).
-- **Minor Error:**
-  - Punctuation typos (Double comma).
-  - Mixed register in lists (Plain/Polite mix).
-  - Trailing punctuation in UI labels.
-- **False Positive (Do Not Report):**
-  - "Better" synonyms.
-  - `の` vs `での` (unless meaning is lost).
-  - Stylistic rephrasing that doesn't change meaning.
+### Punctuation & Spacing
+*   **Commas**: Do not use, except in numbers > 1,000.
+*   **Ellipsis**: Do not use.
+*   **Exclamation marks**: Use `!` (half-width) sparingly; only if appropriate for context.
+*   **Quotation marks**: Use `[]` (half-width square brackets) for UI labels.
+*   **Emphasis**: No italics. Use bold sparingly.
+*   **Capitalization**: No capitalization in Japanese; keep foreign words as is.
+
+### Numbers & Units
+*   **Rounding**:
+    *   < .5: Round down (5.1-5.4 = 5).
+    *   >= .5: Round up (5.5-5.9 = 6).
+    *   Whole number -> Whole number. Decimal -> Decimal.
+*   **Units**: Use standard conversions. No space between number and unit (e.g., `5.8km`).
+*   **Currency**: Do not localize unless explicitly required.
+
+### Kanji & Katakana
+*   **Katakana**: Avoid overusing. Prioritize Kanji/Hiragana. Conduct research to ensure natural phrasing rather than rote Katakana transliteration.
+
+### Names & Transliteration
+*   **Geo-terms**: Use official/widely used names (Wikipedia/Google Maps). Do not "localise" brand names kept in Latin script.
+*   **Airport names**: Use official sources. **Never add the word "Airport"** in the translation if it creates redundancy; the system adds it to copy.
+
+---
+
+## 3. Technical Specifications
+
+### Placeholders & Tags
+*   **Handling**: Do not translate or change variables (e.g., `@@city@@`). 
+*   **Formatting**: Move tags within the sentence to make it grammatically natural in Japanese.
+*   **Spacing**: **Do not** add spaces before/after placeholders.
+
+### URLs
+*   **Requirement**: Never translate.
+*   **Format**: Lowercase, no special characters, hyphens only for word separation.
+
+### CTAs & Active Voice
+*   **Style**: Always use active voice.
+*   **Structure**: Short, direct, action-oriented.
+*   **Punctuation**: Headlines/Titles usually do not end in periods in Japanese.
+
+---
+
+## 4. Content Type Guidelines
+
+### UI
+*   Short, clear, action-focused.
+*   **Consistency**: Use the same term for the same feature (e.g., always "Price Alerts", never mix styles).
+
+### Marketing
+*   Natural, fluid, inspirational. 
+*   Avoid strict adherence to English structure if it impedes natural reading.
+
+### SEO
+*   Prioritize natural language. Avoid keyword stuffing.
+*   Headings must be descriptive.
+
+### Google Ads
+*   Concise, direct benefits, no clickbait or unprovable claims.
+
+### App Store
+*   Highlight main features (search, compare, track). Avoid superlatives.
+
+### Editorial/Blog
+*   Warmer tone, practical tips, factual.
+
+### Legal/Policies
+*   Neutral, precise, no idioms/humor. Accuracy is paramount.
+
+---
+
+## 5. Usage Guidelines (Dos & Don'ts)
+
+| Category | Do | Don't |
+| :--- | :--- | :--- |
+| **Tone** | "We've got the tools..." | "We've got the tools to... [too wordy]" |
+| **Drops** | "Flights that dropped by 20%" | "Flights with a 20% discount" |
+| **Apology** | "Unfortunately the airline cancelled..." | "Sorry, something's gone wrong [in serious contexts]" |
+| **Best** | Only use with disclaimer/data | Use "best" or "cheapest" as an objective claim |
+| **Sustainability** | "Emits 20% less carbon" | "Sustainable flight" or "eco-friendly" |
+| **Formatting** | Use half-width brackets `[]` | Use full-width brackets or quotes |
+| **Abbreviations** | Only if widely understood | Create new abbreviations |
+| **Airport Names** | Use official name | Add "Airport" (leads to duplication) |
+| **Numbers** | 5.8km | 5.8 km (with space) |
+
+---
+
+## 6. Accessibility
+*   Use inclusive, respectful language. 
+*   Avoid stereotypes, gendered assumptions, or labels (e.g., "disabled"). 
+*   Focus on the traveler's needs and situation.
+
+---
+
+## 7. Branding & Feature Naming
+*   **Skyscanner**: Do not translate. Keep as is. Do not add articles. 
+*   **Feature Names**: Focus on user clarity and meaning. Check local competitor terminology. Avoid literal translations if misleading (e.g., "Packages" -> "Package holidays").
+*   **Anglicisms**: Use only if widely understood and fits the tone. Otherwise, use a natural Japanese equivalent.

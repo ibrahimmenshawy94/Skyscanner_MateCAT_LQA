@@ -1,280 +1,104 @@
-# Skyscanner Dutch (NL) – LQA Calibration & Style Guide
-
-## 1. Style Guide Summary
-
-### 1.1. Voice & Tone
-- **Put the traveller first** — every sentence should be helpful
-- Use a **conversational, friendly tone** — imagine talking to a friend
-- Write simply and clearly — choose simple words over complicated ones
-- Use **active voice** wherever possible
-- Be **specific, interesting, and honest**
-- Use **exclamation marks sparingly** — don't just copy from English source
-- Brand name: **Skyscanner** (keep in English)
-
-### 1.2. Form of Address
-| Form | Usage |
-|------|-------|
-| **je, jij** | Always use informal (singular) |
-| **jullie** | When addressing groups — keep consistent |
-| **u** | **NEVER use** — too formal |
-
-### 1.3. Buttons, CTAs & Titles
-**Always use infinitive form** (NOT imperative):
-
-| Source | ❌ Wrong | ✓ Correct |
-|--------|----------|-----------|
-| Sign up now | Meld je nu aan | Nu aanmelden |
-| Discover our map | Ontdek onze kaart | Onze kaart ontdekken |
-| Book now | Boek nu | Nu boeken |
-
-- Be **concise** — remove unnecessary words
-- Avoid telegram style
-
-### 1.4. Numbers, Dates & Currencies
-| Element | Format | Example |
-|---------|--------|---------|
-| Numbers 0-10 | Written out in full | drie vluchten, vijf nachten |
-| Date format | Day/month/year | 3 mei 2020 (NOT 03/05/2020) |
-| Months | Write out in full when possible | 3 mei 2020 |
-| Currency | Symbol + space + amount | $ 200, £ 150, € 99 |
-
-**Note:** Do not convert currencies to euros — follow the source.
-
-### 1.5. Units of Measure
-- **Always convert** English/imperial units to Dutch/metric
-- Miles → kilometers, feet → meters, etc.
-
-### 1.6. Geographical Names
-- **Always translate** to correct Dutch equivalent
-- Check Wikipedia for correct Dutch names
-- Example: Venice → Venetië, Munich → München
-
-### 1.7. Punctuation
-- Keep it simple — follow Dutch rules (www.onzetaal.nl)
-- **No excess punctuation**
-- Don't automatically copy exclamation marks from source
-- Use exclamation marks only when truly appropriate (e.g., "Gefeliciteerd!")
-
-### 1.8. Word Choice Principles
-Prefer **simple, direct language** over formal/business speak:
-
-| ❌ Avoid | ✓ Prefer |
-|----------|----------|
-| accommodatie | hotels, hostels, appartementen |
-| assisteren | helpen |
-| additioneel | extra |
-| aankopen | kopen |
-| informeren | vertellen |
-| ontvangen | krijgen |
-| verificatie | controleren, bevestigen |
-
----
-
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
-
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
-
----
-
-### 2.1. Verb Form Tolerance (Infinitive vs. Imperative)
-
-The Style Guide specifies **infinitive for buttons/CTAs/titles**.
-
-#### 2.1.1. Do NOT Flag
-- Infinitive form used in buttons/CTAs: "Nu aanmelden" ✓
-- Infinitive form in titles and headings
-- Consistent infinitive usage throughout UI elements
-
-#### 2.1.2. Only Flag If
-- Imperative used in buttons/CTAs where infinitive is required: "Meld je aan" ❌
-- Inconsistent mixing of forms within similar UI elements
-- Form creates confusion or sounds unnatural
-
----
-
-### 2.2. Form of Address Tolerance
-
-#### 2.2.1. Do NOT Flag
-- Informal "je/jij" used consistently
-- "Jullie" used when addressing groups appropriately
-- Consistent register throughout the text
-
-#### 2.2.2. Only Flag If
-- Formal "u" used (NEVER acceptable)
-- Inconsistent mixing of "je" and "u" in same context
-- Register inappropriate for context
-
----
-
-### 2.3. Meaning-Based Translation Tolerance
-
-The Style Guide explicitly encourages **conversational, natural translation**.
-
-#### 2.3.1. Do NOT Flag as "Mistranslation"
-- Sentences restructured for natural Dutch flow
-- Formal English terms translated to simpler Dutch equivalents
-- Idiomatic adaptations appropriate for Dutch
-- "Meaning" translated rather than exact words
-
-#### 2.3.2. Do NOT Flag as "Omission/Addition"
-- Unnecessary verbs removed for simplicity
-- Elements added for natural Dutch expression
-- Conjunctions/adverbs added to avoid "robot style"
-- Exclamation marks removed when not appropriate for Dutch
-
-**Only flag** if **core meaning is changed, lost, or contradicted**.
-
----
-
-### 2.4. Exclamation Mark Tolerance
-
-The Style Guide explicitly states: **use exclamation marks sparingly**.
-
-#### 2.4.1. Do NOT Flag
-- Exclamation marks removed from source where Dutch doesn't need them
-- "We hebben een leuke aanbieding voor je." (no exclamation) ✓
-- Exclamation marks kept only where truly appropriate ("Gefeliciteerd!")
-
-#### 2.4.2. Only Flag If
-- Excessive exclamation marks that don't fit Dutch conventions
-- Missing exclamation mark where clearly needed (congratulations, celebrations)
-- Punctuation changes meaning
-
----
-
-### 2.5. Number & Date Format Tolerance
-
-#### 2.5.1. Do NOT Flag
-- Numbers 0-10 written out: "drie nachten" instead of "3 nachten"
-- Numbers 0-10 as digits when context requires (prices, technical)
-- Dates in day/month/year format
-- Month names written out in full
-
-#### 2.5.2. Only Flag If
-- Wrong date order (month/day/year American format)
-- Numbers clearly incorrect or confusing
-- Format creates ambiguity
-
----
-
-### 2.6. Currency & Units Tolerance
-
-#### 2.6.1. Do NOT Flag
-- Currency symbol before amount with space: € 99
-- Source currency kept (not converted to euros)
-- Imperial units converted to metric
-- Minor spacing variations around currency symbols
-
-#### 2.6.2. Only Flag If
-- Currency amounts incorrectly converted
-- Imperial units left unconverted to metric
-- Format creates confusion
-
----
-
-### 2.7. Word Choice & Simplification Tolerance
-
-The Style Guide provides extensive preferred word lists.
-
-#### 2.7.1. Do NOT Flag
-- Simpler words used instead of formal equivalents
-- "helpen" instead of "assisteren"
-- "kopen" instead of "aankopen"
-- "krijgen" instead of "ontvangen"
-- "extra" instead of "additioneel"
-- Natural Dutch expressions replacing business speak
-
-#### 2.7.2. Only Flag If
-- Word choice changes meaning
-- Overly casual where formality is required (legal content)
-- Terminology inconsistent in ways that cause confusion
-
----
-
-### 2.8. Terminology & Synonym Tolerance
-
-| English | Acceptable Dutch Options |
-|---------|--------------------------|
-| Flight | vlucht, vluchten |
-| Book | boeken, reserveren |
-| Search | zoeken |
-| Deal / Offer | aanbieding, deal |
-| Trip | reis, trip, vakantie |
-| Hotel | hotel, accommodatie (context-dependent) |
-| Save (money) | besparen |
-| Save (data) | opslaan |
-| Traveller | reiziger, jij/je |
-| Car rental | autohuur, huurauto |
-
-**Do NOT flag** reasonable synonym choices that preserve meaning and fit context.
-
----
-
-### 2.9. Geographical Name Tolerance
-
-#### 2.9.1. Do NOT Flag
-- Dutch names used for well-known places (Venetië, München, Wenen)
-- Lesser-known places kept in original form
-- Consistent naming approach
-
-#### 2.9.2. Only Flag If
-- Well-known Dutch name exists but English used incorrectly
-- Geographical name misspelled
-- Name creates confusion
-
----
-
-### 2.10. Punctuation & Formatting Tolerance
-
-#### 2.10.1. Do NOT Flag
-- Dutch punctuation rules followed
-- Minimal punctuation used (per style guide)
-- Exclamation marks reduced from source
-- Standard Dutch quotation marks
-
-#### 2.10.2. Only Flag If
-- Punctuation creates meaning confusion
-- Question becomes statement (or vice versa)
-- Missing punctuation affects comprehension
-
----
-
-### 2.11. Content Type Tolerance
-
-Different content types have different requirements:
-
-| Content Type | Tolerance Level |
-|--------------|-----------------|
-| Marketing | High creativity expected |
-| Blog/Editorial | Creative, consider whole context |
-| Emails | Polite, flowing, use conjunctions |
-| UI/Buttons | Concise, infinitive form |
-| Legal | More formal acceptable |
-
-**Do NOT flag** style variations appropriate to content type.
-
----
-
-### 2.12. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, functional errors |
-| **Major** | Core meaning changed, formal "u" used, factual errors, wrong verb form in CTAs |
-| **Minor** | Style preferences within acceptable range, minor inconsistencies |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.11 |
-
----
-
-### 2.13. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Is the **verb form** appropriate for the context (infinitive for CTAs/buttons)?
-2. ☐ Is **"je/jij"** used (not formal "u")?
-3. ☐ Is this a **simpler word choice** that the style guide prefers?
-4. ☐ Is the **exclamation mark** usage appropriate for Dutch (not just copied from source)?
-5. ☐ Does the Style Guide **explicitly prohibit** this choice?
-6. ☐ Would a native Dutch speaker find this **incorrect** (not just different from source)?
-
-**If meaning is preserved AND the translation follows Dutch conventions → DO NOT FLAG**
+# NL Style Guide for Skyscanner
+
+## Critical Requirements
+**Tone Hierarchy**: When prioritizing tones, always adhere to this order: **1. Helpful, 2. Geeky, 3. Playful.**
+
+**Brand Name**: **Skyscanner** must never be translated. Do not add articles unless required for grammatical correctness.
+
+**"Best" Claims**: Never claim "best prices" or "best deals" as an absolute. Use "Best" only when a clear disclaimer explaining the metric is present. Use subjective claims (e.g., "epic prices") instead.
+
+**Discounts**: **Skyscanner never offers discounts.** Do not imply "we offer" a discount. Use neutral language like "You are offered a discount" only if accurate. Never translate "deal" or "price drop" as a "discount" (legally incorrect).
+
+**Sustainability**: Use comparative language only (e.g., "X is more sustainable than Y"). Never use absolutes (e.g., "eco-friendly," "green," "sustainable"). Avoid "green" imagery.
+
+## Tone of Voice
+- **Helpful**: Foundation of all content. Simplify complex travel data. Focus on user needs. Start with benefits/instructions. Apologize only for errors (sincerely, once, focus on solutions).
+- **Geeky**: Enthusiastic about data/patterns. Explain complex info simply. Avoid lectures.
+- **Playful**: Light, natural energy. Use conversational language. 
+    - *Tools*: Rhyme, alliteration, metaphors, vivid adjectives.
+    - *Constraint*: If a device is forced, corny, or reduces clarity, **do not use it.** Clarity > Wordplay.
+    - *Avoid*: Corporate jargon, "LOL-funny" attempts, stiff phrases.
+
+## Technical & URL Guidelines
+- **URLs**:
+    - **No spaces**: Use hyphens (-).
+    - **Case**: Always lowercase.
+    - **Characters**: Latin only. No special characters or accents.
+    - **Greek**: Transliterate.
+- **Placeholders/Variables**: **Never translate, delete, or change** tags (e.g., `@@city@@`). Maintain exact order. If space is needed, add it manually around the tag. If a tag is uneditable, keep as English.
+- **Accessibility**: Follow localized Accessibility guidelines provided separately.
+
+## Language-Specific (Dutch) Rules
+- **Punctuation**:
+    - **Commas**: Use for clear pauses. No Oxford comma (unless needed for readability).
+    - **Ellipsis**: Space before and after, unless breaking a word. No full stop after ellipsis at sentence end.
+    - **Exclamation Marks**: Use very sparingly. Only for genuine excitement. Avoid "shouty" tone.
+    - **Quotes**: Double straight quotes for dialogue. Single straight quotes for UI elements and thoughts.
+    - **Dashes**: **No em-dash.** Use en-dash only for side notes (commas/brackets preferred).
+    - **Full Stops**: None in titles, headers, or buttons.
+- **Emphasis**: Use *accent aigu* (é) for emphasis. No *accent grave* (è) for emphasis (pronunciation only). Avoid ALL CAPS or excessive punctuation.
+- **Capitalization**:
+    - **Sentence Case**: Use for titles and CTAs. Only first word and proper nouns capitalized.
+    - **Months/Days**: Lowercase in running text.
+    - **Colons**: Lowercase after colon, unless: Proper noun follows, list of full sentences follows, quote follows, or text follows "Tip"/"Let op".
+- **Spelling/Grammar**:
+    - Use official dictionaries (Van Dale, Woordenlijst.org).
+    - No unnecessary Anglicisms.
+    - No abbreviations unless widely understood (e.g., airport codes).
+- **Addressing Users**: Use informal "je/jij" consistently. No T/V switching.
+
+## Formatting & UI
+- **Active Voice**: Always use active voice.
+- **CTAs**: Use infinitive form (e.g., "Nu boeken"). Keep short and direct.
+- **Geographical Terms**: Use official Dutch names. No "luchthaven" prefix inside airport placeholders.
+- **Consistency**: Use the same term for features/UI across the product (e.g., always "Prijsalarm").
+
+## Content Type Guidelines
+- **UI**: Short, action-focused. One idea per string.
+- **Marketing**: Natural, inspirational. Avoid literal translations. Focus on benefits (time/money/discovery).
+- **SEO**: Natural language (no keyword stuffing). Descriptive headings.
+- **Google Ads**: Very concise. Avoid clickbait/unsubstantiated claims (e.g., "nummer 1").
+- **App Store**: Highlight features (search, compare, track).
+- **Editorial/Blog**: Warmer, factual, practical.
+- **Legal/Policies**: Precise, neutral. No idioms or emotions.
+
+## Common Error Patterns (Do vs. Don't)
+
+### Tone & Style
+- **Do**: "Eindelijk een manier om vluchten te vergelijken zonder twintig tabbladen te openen."
+- **Don't**: "Waarschuwing: onze vergelijkingstool is zo snel dat het lijkt of je browser een jetpack heeft! Riemen om!" (Too cheesy).
+
+- **Do**: "We kennen het maximale gewicht voor 137 luchtvaartmaatschappijen..."
+- **Don't**: "Wij houden het TOT. OP. DE. GRAM. bij..." (Forced tone).
+
+### Formatting
+- **Do**: "Reserveer de auto die je écht wilt 🚘"
+- **Don't**: "Reserveer de auto die je ECHT wilt" (Avoid ALL CAPS).
+
+- **Do**: "Klik op de knop ‘Terug naar resultaten’..." (Single quotes for UI).
+- **Don't**: "Klik op de knop “Terug naar resultaten”..." (Use single).
+
+- **Do**: "Nu boeken"
+- **Don't**: "Boek Nu" (Use active infinitive).
+
+### Content Strategy
+- **Do**: "Bereik je bestemming binnen je budget."
+- **Don't**: "Bereik uw bestemming binnen uw budget." (Use "je/jij" for Dutch).
+
+- **Do**: "Parijs-Charles de Gaulle"
+- **Don't**: "Luchthaven Parijs-Charles de Gaulle" (No duplication of "airport").
+
+- **Do**: "Deze vlucht stoot 20% minder koolstof uit..."
+- **Don't**: "Dit is de duurzaamste vlucht" (Avoid absolutes/greenwashing).
+
+- **Do**: "Vluchten vergelijken en hotels boeken"
+- **Don't**: "Vluchten Vergelijken En Hotels Boeken" (No Title Case).
+
+## Cultural & Inclusive Language
+- **Inclusivity**: Avoid stereotypes (nationality, gender, age, family status). Use neutral terms.
+- **Emojis**: Use sparingly. Avoid suggestive meanings (aubergine, peach, cherries, banana).
+- **Imagery**: Be modest and real. Avoid exaggeration. Flag imagery that might be culturally insensitive.
+
+## Sustainability Definitions
+- **Avoid**: "Eco", "Green", "Sustainable", "Clean", "Planet-friendly", "Guilt-free".
+- **Use**: Comparative data (e.g., "20% lower carbon emissions").

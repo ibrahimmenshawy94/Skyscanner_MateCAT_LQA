@@ -1,249 +1,130 @@
-# Skyscanner Catalan (CA) – LQA Calibration & Style Guide
+# Catalan Style Guide for Skyscanner
 
-## 1. Style Guide Summary
-
-### 1.1. Voice & Tone
-- Use **informal, conversational tone** — write as if talking to a friend
-- Address users with **informal "tu"** (not formal "vostè")
-- Refer to Skyscanner as **"nosaltres", "nostre"**, etc.
-- **Omit** "please", "sorry", "unfortunately" — convey politeness naturally instead
-- **Creativity is encouraged:** Transcreate freely; don't follow English structure literally
-- Use **active language** and strong verbs
-- **Avoid repetition:** Use synonyms where English would repeat words
-- Play on words is allowed if it engages users positively
-- Brand name: **Skyscanner** (keep in English)
-
-### 1.2. Punctuation & Quotation Marks
-| Element | Catalan Standard | Notes |
-|---------|------------------|-------|
-| Quotation marks | « » | Angular marks (not " ") |
-| Nested quotes | " " inside « » | English marks for inner quotes |
-| Full stop + quote | Outside if quote is mid-sentence | Inside if quote is full paragraph/sentence |
-| Decimal separator | , (comma) | 108,98 € (NOT 108.98 €) |
-| Thousand separator (5+ digits) | Non-breaking space | 12 000 (NOT 12.000 or 12,000) |
-| Thousand separator (4 digits) | None | 1000 (NOT 1.000) |
-
-### 1.3. Non-breaking Spaces
-Use non-breaking spaces in:
-- **Dates:** 18 de març del 2020
-- **Numbers + symbols:** 20 €, 10 %
-
-### 1.4. Numbers
-| Context | Format |
-|---------|--------|
-| 0-10 (general text) | Spelled out when natural (flexible, not strict) |
-| Prices & percentages | Always numerals |
-| 4-digit numbers | No separator (1000) |
-| 5+ digit numbers | Non-breaking space separator (10 000) |
-| Decimals | Comma (3,50 €) |
-
-### 1.5. Capitalisation
-- **Do NOT use title case** — follow Catalan sentence case rules
-- Only capitalise first letter of UI elements: *Clica el botó Canvia a català*
-- Do not capitalise every word in titles/buttons as in English
-
-### 1.6. Anglicisms & Terminology
-**Avoid English words** — use Catalan equivalents:
-
-| English | Catalan |
-|---------|---------|
-| Wi-Fi | wifi |
-| Internet | internet (lowercase) |
-| refund / refundable | reembossar / reembossable |
-| online | en línia |
-| jet lag | trastorn d'horari |
-| hub (airport) | aeroport de connexió |
-| e-mail (system) | correu electrònic / correu |
-| e-mail (message) | missatge / correu |
-| spam | correu brossa |
-| check-in | facturar |
-| start-up | empresa emergent |
-| spa | piscina d'hidromassatge (or appropriate term) |
-
-**Allowed anglicisms** (no italics): bed and breakfast, blog, wifi, internet
-
-**Do NOT** add English in parentheses (e.g., "Sortida tardana (late check-out)" ❌)
-
-### 1.7. Accessibility & Inclusion
-- **Avoid gendered adjectives** when addressing the user directly
-- Reword sentences to achieve gender neutrality
-- Do not overuse possessive pronouns (el nostre, la nostra)
+## Critical Requirements
+- **Tone**: Maintain the "Geeky Travel Pal" persona: Playful, Geeky, Helpful. **If in conflict, prioritize Helpful.**
+- **Clarity**: Always prefer clarity over wordplay.
+- **Sustainability**: Avoid greenwashing. Never use terms like ‘eco’, ‘sustainable’, ‘green’, or ‘carbon-neutral’ unless backed by measurable data. Use comparatives (e.g., "emits 20% less carbon") rather than absolutes.
+- **Addressing Users**: Use "tu" for general content; use "vós" for legal/policy content only.
+- **Variables/Placeholders**: **Never translate or change tags.** Maintain exact syntax/spacing. If Catalan grammar (apostrophes) conflicts with a variable, rephrase the sentence or use brackets/colons before the tag.
+- **No Discounts**: Skyscanner does not offer discounts. Never imply "we offer" a discount. Use neutral language like "You are offered a discount" or describe price drops/deals.
 
 ---
 
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
-
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
-
----
-
-### 2.1. Meaning-Based Translation Tolerance
-
-The Style Guide explicitly encourages **creative transcreation** and restructuring.
-
-#### 2.1.1. Do NOT Flag as "Mistranslation"
-- Sentences restructured for natural Catalan flow
-- English structure abandoned for more idiomatic Catalan
-- Meaning conveyed differently but accurately
-- Condensed or simplified sentences that preserve core message
-- Idiomatic expressions adapted for Catalan audience
-
-#### 2.1.2. Do NOT Flag as "Omission"
-- "Please" / "si us plau" omitted (politeness conveyed otherwise)
-- "Sorry" / "unfortunately" omitted (per style guide)
-- Excessive possessive pronouns reduced
-- Articles or connectors adjusted for Catalan flow
-- Redundant words removed for brevity
-
-#### 2.1.3. Do NOT Flag as "Addition"
-- Elements added for natural Catalan expression
-- Connectors or transitions required in Catalan
-- Context-appropriate elaboration that clarifies meaning
-
-**Only flag** if **core meaning is changed, lost, or contradicted**.
+## Tone of Voice: Geeky Travel Pal
+- **Playful**: Conversational tone (talking to a friend), lively rhythm. Use "travel hacks" and simple tips. 
+    - *Tools*: Rhyme, alliteration, metaphors (use sparingly).
+    - *Avoid*: Corny puns, "fake-smart" corporate speak, "LOL-funny" attempts, overly formal/stiff phrases.
+- **Geeky**: Enthusiastic, data-driven, precise. Explain complex details simply. Tone should be a knowledgeable friend, not a lecturer.
+- **Helpful**: Put the traveler first. Start with benefits/instructions. 
+    - *Apologies*: Drop playfulness, show empathy, be transparent, focus on solutions. Avoid "sorry/unfortunately" where possible.
 
 ---
 
-### 2.2. Politeness Expression Tolerance
-
-The Style Guide instructs to **avoid literal translation of politeness markers**.
-
-#### 2.2.1. Do NOT Flag
-- Omission of "please" / "si us plau"
-- Omission of "sorry" / "ho sentim"
-- Omission of "unfortunately" / "malauradament"
-- Alternative politeness strategies (tone, word choice)
-- Direct imperatives without softeners (style-appropriate)
-
-**Only flag** if the tone becomes **rude, aggressive, or inappropriate**.
+## General Writing & Translation Guidelines
+- **Inclusive Language**: Avoid stereotypes (gender, age, ability, family status). Use neutral, precise terms. No slash/asterisk forms (e.g., no *viatgers/es). 
+- **Active Voice**: Mandatory in headlines/CTAs.
+- **CTAs**: Short, direct, imperative. **Avoid "ara"**. Focus on user action.
+- **Anglicisms**: Use only if widely accepted. Avoid if a clear Catalan equivalent exists.
+- **Abbreviations**: Use only if widely understood (e.g., PNR). Define acronyms: "Full term (ACRONYM)".
+- **Best/Superlatives**: Do not claim "best prices/deals". Use subjective claims ("preus èpics", "ofertes increïbles") or explain how "best" is measured.
 
 ---
 
-### 2.3. Register & Formality Tolerance
+## Technical & Formatting Rules
 
-#### 2.3.1. Do NOT Flag
-- Use of "tu" instead of "vostè" (informal required)
-- Conversational constructions
-- Contractions and informal phrasing
-- Play on words or creative expressions
-- Reduced use of possessive pronouns
+### URLs
+- **Format**: All lowercase, no special/extended characters (replace with basic Latin).
+- **Separator**: Use hyphens (`-`) instead of spaces.
 
-#### 2.3.2. Only Flag If
-- Formal "vostè" used instead of "tu"
-- Tone is bureaucratic or overly stiff
-- Language is inappropriately casual for context (legal, safety)
+### Punctuation & Spacing
+- **Exclamation Marks**: Use sparingly. Avoid multiple marks (!!!).
+- **Question Marks**: Use in titles containing questions.
+- **Quotation Marks**: Use angular (« ») first, then straight (" "), then single (' '). Do not use for UI terms.
+- **Dashes**: Avoid unless necessary.
+- **Headers**: No final period.
+- **Bullet Points**: Period only if full sentences. No ending comma.
+- **Alt Text/Links**: Alt text ends with a period; links do not.
+- **Emphasis**: Use bold/italics. Avoid caps or extra punctuation for emphasis.
+- **Colons**: Do not capitalize the word following a colon unless it starts a new line.
 
----
-
-### 2.4. Punctuation & Formatting Tolerance
-
-#### 2.4.1. Do NOT Flag
-- Minor variations in quotation mark styles (« » vs " ")
-- Full stop position variations with quotes (context-dependent rule)
-- Regular space vs non-breaking space (often not visible/verifiable)
-- Minor comma placement variations that don't affect meaning
-
-#### 2.4.2. Only Flag If
-- Decimal uses wrong separator (. instead of ,) in prices
-- Quotation marks fundamentally misused (creating confusion)
-- Punctuation changes meaning (question becomes statement)
+### Capitalization
+- **Titles/CTAs**: Sentence case (Capitalize first word + proper nouns).
+- **Product Names**: Consistent across UI/copy. Use sentence case unless branded.
 
 ---
 
-### 2.5. Terminology & Synonym Tolerance
-
-| English | Acceptable Catalan Options |
-|---------|----------------------------|
-| Flight | vol, vol d'avió |
-| Book | reserva, fes la reserva |
-| Search | cerca, busca |
-| Deal / Offer | oferta, promoció |
-| Trip | viatge, escapada |
-| Hotel | hotel, allotjament |
-| Save (money) | estalvia |
-| Save (data) | desa, guarda |
-| Traveller | viatger, usuari |
-
-**Do NOT flag** reasonable synonym choices that preserve meaning and fit context.
+## Catalan-Specific Linguistics
+- **Place Names/Transliteration**: Use official/widely used local names. Check Nomenclàtor/ÉsAdir first. Do not add "airport" unless it's the official name or needed for context.
+- **Apostrophes (Placeholders)**: If a tag causes an apostrophe issue, rephrase or use brackets/colons.
+- **Example**: `@@city@@` -> `Vola des de @@city@@` (Ensure article/preposition compatibility).
 
 ---
 
-### 2.6. Anglicism Handling Tolerance
+## Content-Type Guidelines
 
-#### 2.6.1. Do NOT Flag
-- Catalan equivalents used instead of English terms (even if English is common)
-- Approved anglicisms without italics (wifi, blog, internet)
-- Brand/airline names kept in English
-- Technical terms where Catalan equivalent is acceptable
+### User Interface (UI)
+- Short, clear, action-focused. One idea per string.
+- Consistent terminology (e.g., always "Price Alerts").
 
-#### 2.6.2. Only Flag If
-- English term used when clear Catalan equivalent exists AND style guide specifies Catalan
-- Unnecessary English added in parentheses
-- Misspelled anglicisms
+### Marketing
+- Creative, fluid, inspirational.
+- Focus on traveller benefits (saving time, money, effort).
 
----
+### SEO
+- Natural language only (no keyword stuffing).
+- Descriptive headings/titles.
 
-### 2.7. Number & Format Tolerance
+### Google Ads
+- Extremely concise.
+- Direct benefits and CTA.
+- No clickbait/unprovable claims (e.g., "the best").
 
-#### 2.7.1. Do NOT Flag
-- Numbers 0-10 written as digits instead of words (flexible rule)
-- Numbers 0-10 spelled out in prices/percentages context
-- Variations in spacing that don't affect readability
+### App Store
+- Highlight main benefits (search, compare, track).
+- Simple phrases. Avoid superlatives/guarantees.
 
-#### 2.7.2. Only Flag If
-- Wrong decimal separator (period instead of comma)
-- Wrong thousand separator (period/comma instead of space for 5+ digits)
-- Format creates confusion or is clearly incorrect
+### Editorial & Blog
+- Warm, descriptive, factual, practical.
+- Adapt content to local relevance.
 
----
+### Emails/Push Notifications
+- Short subject lines.
+- Clear next-step actions.
 
-### 2.8. Capitalisation Tolerance
-
-#### 2.8.1. Do NOT Flag
-- Sentence case in titles/headings (correct for Catalan)
-- UI elements with capitalised first letter only
-- Proper nouns following Catalan conventions
-
-#### 2.8.2. Only Flag If
-- English-style title case applied throughout (Every Word Capitalised)
-- Proper nouns incorrectly lowercased
-- Capitalisation creates meaning confusion
+### Legal/Policies
+- Accurate, precise, neutral.
+- **Treatment**: Use "vós".
+- No emotional language, jokes, or interpretations.
 
 ---
 
-### 2.9. Gender Neutrality Tolerance
-
-#### 2.9.1. Do NOT Flag
-- Sentences restructured to avoid gendered adjectives
-- Gender-neutral workarounds
-- Generic masculine when neutrality is impossible and context doesn't specify gender
-
-#### 2.9.2. Only Flag If
-- Gendered language contradicts specified user gender
-- Unnecessarily gendered when neutral option is natural
+## Branding & Terminology
+- **Skyscanner Brand**: Do not translate or add articles. Always use "Skyscanner".
+- **Feature Names**: Focus on meaning/clarity. Use local travel provider equivalents if "literal" is misleading (e.g., "Packages" -> "package holidays" if needed).
+- **Sustainability (Do's/Don'ts)**:
+    - *Do*: Use comparatives (e.g., "X is more sustainable than Y"). Use data (e.g., "20% less carbon").
+    - *Don't*: Use labels like ‘natural’, ‘eco’, ‘green’, ‘net’, ‘respectuós amb el planeta’, or ‘sense culpes’. Avoid metaphors implying aviation is environmentally harmless.
 
 ---
 
-### 2.10. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, functional errors |
-| **Major** | Core meaning changed, factual errors, wrong register (vostè instead of tu), inappropriate tone |
-| **Minor** | Style preferences within acceptable range, minor inconsistencies |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.9 |
+## Troubleshooting & Resources
+- **Grammar/Orthography**: IEC (GEIEC), Optimot, TERMCAT (Cercaterm).
+- **Toponyms**: ÉsAdir.
+- **Synonyms**: Diccionari de sinònims Franquesa.
+- **Validation**: If unsure, flag to Skyscanner. Never guess.
 
 ---
 
-### 2.11. Pre-Flag Checklist
+## Quick Reference (Do's & Don'ts)
 
-Before flagging, verify:
-
-1. ☐ Is this a **creative transcreation** that sounds natural in Catalan?
-2. ☐ Was the omission intentional per style guide (please, sorry, unfortunately)?
-3. ☐ Is the **core meaning preserved** despite structural changes?
-4. ☐ Does the Style Guide **explicitly prohibit** this choice?
-5. ☐ Would a native Catalan speaker find this **incorrect** (not just different from source)?
-6. ☐ Is the flagged issue about **literal fidelity** rather than actual error?
-
-**If meaning is preserved AND the translation sounds natural in Catalan → DO NOT FLAG**
+| Category | Do | Don't |
+| :--- | :--- | :--- |
+| **Formatting** | vols-directes | volsdirectes, Vols-Directes |
+| **Chars** | vols-a-venècia | vols-a-venecia (incorrect accent) |
+| **CTAs** | Reserva | Reserva ara |
+| **Tone** | "T'hi ajudem!" | "Si us plau, si tens cap problema..." |
+| **Voice** | Active ("Cerquem vols...") | Passive ("S’han cercat vols...") |
+| **Sustainability**| "Emet 20% menys de carboni" | "Vol sostenible/ecològic" |
+| **Clarity** | "Compara vols..." | "Troba els millors vols del món, sempre." |
+| **User Address** | "Tens dret a..." (Content) | "Teniu dret a..." (Legal only) |
+| **UI Labels** | "Mostra el mapa" | "Mostrar el mapa" |

@@ -1,315 +1,106 @@
-# Skyscanner Spanish Spain (es-ES) – LQA Calibration & Style Guide
+# es-ES Style Guide for Skyscanner
 
-## 1. Style Guide Summary
+## Critical Requirements: Tone & Voice
+**Core Persona**: "Geeky Travel Pal."
+- **Playful**: Conversational, natural rhythm, light energy. Use puns/metaphors *only* if they feel natural and maintain clarity.
+- **Geeky**: Data-driven, expert, inquisitive, human. Simplify complex info.
+- **Helpful**: Foundation priority. If rules conflict, **be helpful first**. Make travel information clear, manageable, and simple.
 
-### 1.1. Voice & Tone
-- Use **Castilian Spanish (Spain)** — warm, conversational, friendly
-- Address users with **informal "tú"** (not formal "usted")
-- **Exception:** Legal texts use formal "usted"
-- Use **"nosotros/nos/nuestro"** to refer to Skyscanner
-- Write as if talking to a friend — clear, direct, inspiring
-- **Creativity is key:** Feel free to transcreate; don't follow English structure blindly
-- **Avoid word repetition:** Use synonyms where possible
-- Skyscanner = **Skyscanner** (do not translate)
+**Formality (T/V Policy)**:
+- **General**: Use informal **“tú”**. Refer to Skyscanner as "nosotros/nuestro".
+- **Legal**: Use formal **“usted”**.
 
-### 1.2. Punctuation
-
-| Mark | Usage |
-|------|-------|
-| Exclamation marks (¡!) | Use prudently — can sound overexcited in Spanish |
-| Quotation marks | Use angular «» instead of English "" |
-| Hyphens | Unusual in Spanish — avoid hyphenated words |
-| Full stops | NO full stops for: buttons, menus, headers, titles |
-| Commas | Follow Spanish rules, not English source |
-
-- **Free to change punctuation** and merge sentences for readability
-- **Bulleted lists:** Follow Spanish punctuation/capitalization conventions
-
-### 1.3. Capitalization
-
-| Element | Rule |
-|---------|------|
-| Titles and buttons | Do NOT capitalize every word (unlike English) |
-| Months and days | Lowercase (enero, lunes) unless starting sentence |
-| After colon | Usually lowercase |
-
-**Exceptions for capital after colon:**
-- After greeting in email/letter
-- After "Nota:", "Aviso:", "Urgente:"
-- When following text is a quote
-
-### 1.4. Non-breaking Spaces
-
-Use non-breaking spaces in these contexts:
-
-| Context | Correct | Incorrect |
-|---------|---------|-----------|
-| Dates | 18 de marzo de 2020 | 18de marzo de2020 |
-| Currency | 20 € | 20€ |
-| Percentage | 10 % | 10% |
-
-### 1.5. Numbers
-
-| Context | Format |
-|---------|--------|
-| 0–10 in text | Written form preferred (dos, cinco) — but flexible |
-| 4-digit numbers | No separator (1000, 2500) |
-| 5+ digit numbers | Non-breaking space separator (10 000, 100 000) |
-| Decimals | Comma (3,5) |
-| Prices/percentages | Numerals always acceptable |
-
-### 1.6. Dates & Time
-
-| Format | Example |
-|--------|---------|
-| Date | DD/MM/YYYY (02/09/2021) |
-| Full date | El viernes, 2 de septiembre de 2021 (lowercase) |
-| Time | 24-hour with colon (14:00) |
-| Time with "h" | Optional: 14:00 or 14:00 h (space before h) |
-| Time placeholders | Use "las" (covers all times except 01:00) |
-
-### 1.7. Active Voice
-- **Prefer active voice** over passive voice
-  - ✓ "El hotel ha cancelado tu reserva."
-  - ✗ "Tu reserva ha sido cancelada por el hotel."
-
-### 1.8. Anglicisms
-- **Avoid** English words when Spanish equivalent exists
-- **Exceptions:** Some terms allowed for Social Media/Marketing (case-by-case)
-- Common accepted terms: check-in, online, email (verify with context)
-
-### 1.9. Inclusion & Gender
-- **Try to phrase as gender neutral as possible**
-- Use inclusive constructions where natural
-
-### 1.10. Names & Geo-terms
-- **Skyscanner:** Keep in English (never translate)
-- **Country names:** Follow RAE spelling
-- **Organization names:** Research official Spanish names; keep English if no Spanish exists
-- **URLs:** No spaces, lowercase, no special characters (ñ → n, á → a)
+**Sustainability & Greenwashing**:
+- **Avoid**: "Sustainable", "eco", "green", "clean", "planet-friendly", "guilt-free".
+- **Requirement**: Use transparent, factual, data-based language. Prefer comparatives ("X emits 20% less carbon than Y") over absolutes ("greenest option").
 
 ---
 
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
+## Technical & Formatting Standards
 
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
+### URLs
+- **Case**: Always lowercase.
+- **Separators**: Use standard hyphen `-`.
+- **Characters**: Latin only. No special/extended characters (replace with basic Latin).
+- **Format**: `example-url-string`
 
----
+### Placeholders, Variables & Tags
+- **Handling**: **Never translate, delete, or change** tags/variables (e.g., `%{time}`, `@@variable@@`).
+- **Syntax**: Keep exact source order. Ensure grammar (e.g., articles, adjectives) in surrounding text agrees with the inserted variable. Use placeholders/workarounds to avoid agreement issues (e.g., "Se ha encontrado 1 @@flight@@" instead of "1 @@flight@@ encontrado").
 
-### 2.1. Creative Translation Tolerance
+### Numbers & Dates
+- **Format**: DD/MM/YYYY.
+- **Time**: 24h format with colon (e.g., `14:00`). Do not use "h" after time; if used, insert a non-breaking space.
+- **Decimals**: Use a comma `,` (e.g., `10,5`).
+- **Thousands**: Use a non-breaking space (e.g., `10 000`).
+- **4-figure numbers**: Do **not** use a separator.
+- **Conversational**: Write numbers 0–10 in words (except prices/percentages).
 
-The Style Guide explicitly encourages **transcreation and creative adaptation**.
-
-#### 2.1.1. Do NOT Flag as "Mistranslation"
-- Restructured sentences that preserve meaning
-- Different wording that sounds more natural in Spanish
-- Merged or split sentences for better readability
-- Changed sentence structure from English source
-- Idiomatic Spanish expressions replacing literal translations
-- Synonym use to avoid word repetition
-
-#### 2.1.2. Do NOT Flag as "Omission/Addition"
-- Words added for natural Spanish flow
-- Words omitted that are redundant in Spanish
-- Restructuring that conveys same message differently
-- Cultural adaptations that preserve intent
-
-**Only flag** if core meaning is changed or lost.
-
----
-
-### 2.2. Punctuation Tolerance
-
-The Style Guide states translators are **free to change punctuation**.
-
-#### 2.2.1. Acceptable Quotation Mark Variations
-
-| Style | Accept? |
-|-------|---------|
-| Angular «ejemplo» | ✓ Preferred |
-| Straight "ejemplo" | ✓ Accept (system limitations) |
-| English curly "ejemplo" | ✓ Accept (minor) |
-
-#### 2.2.2. Do NOT Flag
-- Exclamation marks added or removed for appropriate Spanish tone
-- Merged sentences for readability
-- Changed comma placement following Spanish rules
-- No full stop on buttons, CTAs, titles, headers
-- Different punctuation than source if meaning is preserved
-
-#### 2.2.3. Only Flag If
-- Question becomes statement (¿? removed from question)
-- Punctuation creates meaning confusion
-- Full stop on button/CTA (should not have one)
+### Punctuation
+- **Quotes**: Use angular quotation marks `« »` instead of “ ”.
+- **Periods**: Do **not** use full stops in buttons, menu text, or headers.
+- **Emphasis**: Use bold/italics for emphasis. Avoid ALL CAPS or excessive exclamation marks.
+- **Lists**: Bulleted lists must follow language-specific punctuation standards.
 
 ---
 
-### 2.3. Capitalization Tolerance
+## Linguistic Guidelines
 
-Spanish capitalization differs significantly from English.
+### Writing Style
+- **Voice**: Use active voice. Use infinitive for user-driven actions; use imperative when encouraging actions.
+- **Inclusivity**: Use neutral, precise terms. Avoid stereotypes (gender, age, ability, background).
+- **Capitalization**: Use sentence case (only first word and proper nouns). Do not capitalize months/days unless at sentence start.
+- **Anglicisms**: Use only if widely accepted and expected. Avoid unnecessary English terms.
+- **Abbreviations**: Use only if widely understood. Write full term + (abbrev) on first mention.
 
-#### 2.3.1. Do NOT Flag
-- Lowercase titles/buttons (correct for Spanish)
-- Lowercase months/days (enero, lunes)
-- Lowercase after colon (in most contexts)
-- Title case NOT matching English source (this is CORRECT)
-
-#### 2.3.2. Only Flag If
-- Missing capital at sentence start
-- Proper nouns in lowercase
-- Clear capitalization error by Spanish standards
-
----
-
-### 2.4. Number & Date Format Tolerance
-
-#### 2.4.1. Do NOT Flag
-- Written numbers 0-10 (dos, tres) OR numerals — both acceptable
-- Numerals for prices/percentages regardless of value
-- 4-digit numbers without separator (1000)
-- Comma as decimal separator (3,5)
-- Lowercase months/days in full dates
-
-#### 2.4.2. Only Flag If
-- Wrong decimal separator (period instead of comma)
-- Capitalized months/days (Enero, Lunes)
-- Clearly incorrect date format
-- AM/PM instead of 24-hour format
+### Terminology & Brand
+- **Skyscanner**: Never translate the brand name.
+- **"Best"**: Cannot claim "best prices/deals" objectively. Use only if a disclaimer explains the metric (e.g., sorted results). Otherwise, use subjective terms like "epic prices".
+- **"Discount"**: Skyscanner never offers discounts. Use only when referring to partner-specific offers. Never use for "price drops" or "deals" (these are market fluctuations).
+- **Airport Names**: Do not add the word "aeropuerto" unless required by syntax (e.g., placeholders often handle the specific name). Check official sources for translations.
 
 ---
 
-### 2.5. Gender Agreement Tolerance
+## Content-Specific Rules
 
-#### 2.5.1. Acceptable Gender Strategies
-
-| Strategy | Example |
-|----------|---------|
-| Masculine default for unknown users | Standard generic usage |
-| Gender-neutral restructuring | Using constructions that avoid marking gender |
-| Inclusive phrasing | Natural-sounding alternatives |
-
-**Do NOT flag:**
-- Masculine generic for unknown-gender contexts
-- Restructuring to achieve gender neutrality
-- Standard Spanish gender agreement patterns
-
-**Only flag** if gender is explicitly specified and translation contradicts it.
+| Content Type | Style Requirements |
+| :--- | :--- |
+| **UI** | Short, clear, action-focused. One idea per string. |
+| **Marketing** | Creative, fluid, inspirational. Focus on traveler benefits (saving time/money). |
+| **SEO** | Natural language (no keyword stuffing). Clear, descriptive titles. |
+| **Google Ads** | Extremely concise. Benefits + CTA. No clickbait/unprovable superlatives. |
+| **App Store** | Simple, natural phrases. Focus on search/compare/track. |
+| **Editorial** | Warm, descriptive, factual. Balance inspiration with concrete tips. |
+| **Emails** | Short subject lines. Clear "next steps" (search/manage/book). |
+| **Legal** | Precise, neutral, consistent. **No** jokes or emotional language. |
 
 ---
 
-### 2.6. Formality Tolerance
+## Quick Reference: Do vs. Don't
 
-#### 2.6.1. Do NOT Flag
-- Consistent use of informal "tú" (this is CORRECT)
-- Conversational tone throughout
-- "Nosotros/nos/nuestro" for Skyscanner
+- **Buttons**:
+    - Do: `Ver ofertas`
+    - Don't: `Mostrar una selección de opciones de vuelos disponibles`
+- **Error Messages**:
+    - Do: `Ha habido un error. Inténtalo de nuevo.`
+    - Don't: `Vaya, parece que algo no ha funcionado por alguna misteriosa razón…`
+- **Dates**:
+    - Do: `18 de marzo de 2020`
+    - Don't: `18_de_marzo_de _2020`
+- **Sustainability (Claims)**:
+    - Do: `Este vuelo emite un 20 % menos de carbono que los vuelos habituales.`
+    - Don't: `Este es el vuelo más sostenible/verde.`
+- **Capitalization**:
+    - Do: `Explora cualquier lugar en mayo.`
+    - Don't: `Explora cualquier lugar en Mayo.`
+- **Punctuation**:
+    - Do: `Haz clic en el botón «Volver a los resultados»`
+    - Don't: `Haz clic en el botón VOLVER A LOS RESULTADOS`
+- **Consistency**:
+    - Do: Use one term consistently (e.g., "Alertas de precios"). Do not switch between synonyms (e.g., "Monitorización de precios").
 
-#### 2.6.2. Only Flag If
-- Mixed formality (tú/usted in same context)
-- Formal "usted" in non-legal content
-- Informal "tú" in legal content (should be "usted")
-
----
-
-### 2.7. Active Voice Tolerance
-
-#### 2.7.1. Do NOT Flag
-- Active voice constructions (preferred)
-- Passive voice when it sounds natural in Spanish
-- Restructuring from passive to active
-
-#### 2.7.2. Only Flag If
-- Awkward passive construction when active would be clearly better
-- Meaning changed by voice transformation
-
----
-
-### 2.8. Terminology & Synonym Tolerance
-
-The Style Guide encourages **synonym use to avoid repetition**.
-
-| English | Acceptable Spanish Options |
-|---------|----------------------------|
-| Flight | vuelo |
-| Book (verb) | reservar, hacer una reserva |
-| Search | buscar, busca |
-| Deal | oferta, promoción, chollo (marketing) |
-| Trip | viaje, escapada, aventura |
-| Hotel | hotel, alojamiento |
-| Save (money) | ahorrar, ahorra |
-| Save (bookmark) | guardar |
-| App | aplicación, app |
-| Website | sitio web, página web, web |
-
-**Do NOT flag** reasonable synonym choices or varied vocabulary.
-
----
-
-### 2.9. Anglicism Tolerance
-
-#### 2.9.1. Do NOT Flag
-- Widely accepted terms: online, email, check-in, app, web
-- Terms without good Spanish equivalent
-- Marketing/Social Media contexts with appropriate anglicisms
-
-#### 2.9.2. Only Flag If
-- Anglicism when clear Spanish equivalent exists and would be better
-- Unnecessary English that hinders comprehension
-- Inconsistent use in same text
-
----
-
-### 2.10. Non-breaking Space Tolerance
-
-#### 2.10.1. Do NOT Flag
-- Regular spaces where non-breaking should technically be used (often system-dependent)
-- Minor spacing variations around currency/percentage symbols
-
-#### 2.10.2. Only Flag If
-- No space at all between number and symbol (20€ vs 20 €) — minor
-- Spacing creates readability issues
-
----
-
-### 2.11. Time Placeholder Tolerance
-
-#### 2.11.1. Acceptable Time Article Handling
-
-| Source | Acceptable Spanish |
-|--------|-------------------|
-| `after {{time}}` | `a partir de las {{time}}` |
-| `at {{time}}` | `a las {{time}}` |
-
-**Do NOT flag:**
-- Use of "las" for time placeholders (covers all times except 01:00)
-- Avoiding "la(s)" construction
-
-**Only flag** if article usage creates clear grammatical error.
-
----
-
-### 2.12. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, wrong currency |
-| **Major** | Core meaning changed, factual errors, wrong formality (tú/usted mismatch) |
-| **Minor** | Style preferences, minor inconsistencies within acceptable range |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.11 |
-
----
-
-### 2.13. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Is this a **creative adaptation** that sounds natural in Spanish?
-2. ☐ Is the **informal "tú" register** consistently used (except legal)?
-3. ☐ Does **capitalization** follow Spanish rules (not English)?
-4. ☐ Is the **core meaning preserved** despite structural changes?
-5. ☐ Does the Style Guide **explicitly prohibit** this choice?
-6. ☐ Would a native Spain Spanish speaker find this **incorrect** (not just different)?
-7. ☐ Is **synonym variation** being used appropriately to avoid repetition?
-8. ☐ Are **quotation marks** functional even if not angular style?
-
-**If meaning is preserved AND the structure sounds natural in Spanish → DO NOT FLAG**
+## External Resources (Consult for specific queries)
+- **RAE**: [http://www.rae.es/](http://www.rae.es/)
+- **Diccionario Panhispánico de Dudas**: [http://www.rae.es/recursos/diccionarios/dpd](http://www.rae.es/recursos/diccionarios/dpd)
+- **Fundéu**: [http://www.fundeu.es/](http://www.fundeu.es/)
+- **DiCE**: [http://www.dicesp.com/paginas](http://www.dicesp.com/paginas)

@@ -1,267 +1,130 @@
-# Skyscanner Romanian (RO) – LQA Calibration & Style Guide
+# Romanian Style Guide for Skyscanner
 
-## 1. Style Guide Summary
-
-### 1.1. Voice & Tone
-- Use **Romanian** — warm, friendly, conversational, not formal or stiff
-- Address users with **informal singular "tu"** (not formal "dumneavoastră")
-- Write as if talking to a friend — natural, clear, direct
-- **Avoid nominalization:** Use verbs instead of excessive nouns to keep tone casual
-- **Creativity is key:** Translate meaning, not words; make it sound naturally Romanian
-- Skyscanner = **Skyscanner** (keep in English, do not translate)
-
-### 1.2. Punctuation
-
-| Mark | Usage |
-|------|-------|
-| Ampersand (&) | Translate as "și" unless part of a brand name |
-| Dash (—) | Use sparingly; primarily for pauses; can replace with comma or colon |
-| Quotation marks | Use Romanian style: „..." for primary; « » for nested quotes |
-| Exclamation (!) | Use sparingly — don't overuse |
-| Comma (,) | Avoid excessive punctuation |
-
-- **Do not use excessive punctuation** — it makes text harder to read
-- Dash signs should not be overused outside of marking pauses
-
-### 1.3. Numbers & Dates
-
-| Context | Format |
-|---------|--------|
-| Date format | DD.MM.YYYY (14.04.2016) |
-| Full date in text | joi, 14 aprilie 2016 (**lowercase** days/months) |
-| Time format | 24-hour with colon (14:53) |
-| Thousand separator | Full stop (1.000) |
-| Decimal separator | Comma (3,5) |
-| Numbers in text | Use digits (prefer "3 zile" over "trei zile") |
-| Millions/billions | Use words: "3 miliarde" (not "3.000.000.000") |
-| Ranges | Conversational: "între 2 și 7 zile" (not "2-7 zile") |
-
-### 1.4. Currencies
-- **Without number:** Write in letters (e.g., "cont în euro")
-- **With number:** Use code format with space: `250 EUR`
-- **Non-breaking space** between number and currency code
-- **Avoid currency symbols** (€, $) in translations — use letter codes (EUR, USD)
-
-### 1.5. Addressing Users – "Tu"
-- Always use **informal "tu"** form (not "dumneavoastră")
-- Maintains friendly, warm tone consistent with Skyscanner's voice
-- Verb conjugations should match 2nd person singular informal
-
-### 1.6. Anglicisms
-- **Acceptable:** Widely understood English words (e.g., "online", "check-in", "email")
-- **Avoid:** Niche English terms or jargon not widely known to general Romanian audience
-- When in doubt, use Romanian equivalent if one exists and is natural
-
-### 1.7. Names & Toponyms
-- **Skyscanner:** Keep in English (never translate)
-- **Brand/company names:** Keep in English unless established Romanian name exists
-- **Country names:** Follow EU Publications Office Romanian conventions
-- **URLs:** Always keep in English
-
-### 1.8. Units of Measure
-- Use **metric system** (km, m, kg, etc.)
+## Critical Requirements
+**Tone Hierarchy**: **Helpful > Geeky > Playful**. If a choice must be made, prioritize being helpful.
+**Brand Voice**: **Geeky Travel Pal**. Conversational, human, enthusiastic but controlled, and clear.
+**Formality**: **Always use informal "tu"** for user address.
+**Critical Exclusions**: 
+- **NO "discount" or "guaranteed"**: Never use these terms. Use neutral phrasing like "price drops" or "deals".
+- **NO superlatives**: Avoid "best", "cheapest ever", "greenest". Use subjective claims (e.g., "epic prices") only if non-comparative.
+- **NO greenwashing**: Sustainability claims must be fact-based comparatives (e.g., "20% fewer emissions"). Never use "eco", "clean", or "sustainable" as absolute labels.
+- **NO Title Case**: Use sentence case for all titles, UI elements, and CTAs.
 
 ---
 
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
+## 1. Tone & Voice
+### 1.1 Playful
+- Write with a light, natural energy, as if talking to a friend. 
+- **Use**: Travel hacks, clear explanations.
+- **Optional (Sparingly)**: Rhymes, alliteration, metaphors (if natural).
+- **Avoid**: "Fake-smart" corporate jargon, "LOL-funny" attempts, stiff/overly formal phrases.
 
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
+### 1.2 Geeky
+- Focus on data, patterns, and expertise.
+- **Explain** complex info humanly.
+- **Tone**: Enthusiastic but controlled (knowledgeable friend, not a lecturer).
 
----
-
-### 2.1. Quotation Mark Tolerance
-
-Romanian has specific quotation mark conventions, but flexibility is needed.
-
-#### 2.1.1. Acceptable Quotation Mark Styles
-
-| Style | Example | Accept? |
-|-------|---------|---------|
-| Romanian standard | „exemplu" | ✓ Preferred |
-| Guillemets (nested) | „text «citat» text" | ✓ Preferred for nested |
-| Straight double quotes | "exemplu" | ✓ Accept (system limitations) |
-| English curly quotes | "exemplu" | ✓ Accept (minor) |
-
-**Do NOT flag:**
-- Straight quotes when Romanian quotes may not be available in system
-- Minor quotation style variations that don't affect meaning
-
-**Only flag** if quotation marks are missing where required or create confusion.
+### 1.3 Helpful
+- **Prioritize the user**: Start with the benefit/instruction, then explain.
+- **Be honest**: For bad news, drop playfulness, show empathy, be clear on next steps.
+- **No cold apologies**: Avoid "We apologize for the inconvenience". Use sincere, solution-focused language.
+- **Short & Simple**: Use short sentences. Prefer "pose question then offer solution".
 
 ---
 
-### 2.2. Gender & Case Agreement Tolerance
+## 2. Language-Specific Requirements (Romanian)
+### 2.1 Grammar & Syntax
+- **Possessives**: Reduce usage. They are often superfluous in Romanian (e.g., use "la următoarea călătorie" instead of "la următoarea ta călătorie").
+- **Exclamation Marks**: **Use sparingly** (only for excitement or interjections). **NEVER use in instructions or direct user messages** (prevents "shouting" tone).
+- **Commas**: Use only as required by grammar; do not add for pauses.
+- **Capitalization**: 
+  - **NO Title Case**. Use sentence case.
+  - **No capital letter after colon**.
+- **Quotes**: Use `« »` for inner quotes; use `""` for main quotes.
+- **Ampersands**: Translate as `și` (unless part of a brand name).
+- **Inclusive Language**: Avoid gendered assumptions. Use neutral phrasing (e.g., "Te-ai conectat" instead of "Ești conectat").
 
-Romanian has grammatical gender and complex case system. For unknown-gender placeholders, **accept reasonable defaults.**
-
-#### 2.2.1. Acceptable Gender Strategies
-
-| Strategy | Example |
-|----------|---------|
-| Masculine default for unknown users | "Bun venit, {{user}}!" |
-| Restructuring to avoid gender | Using impersonal constructions |
-| Generic forms | Using constructions that work for both genders |
-
-**Do NOT flag:**
-- Masculine default for unknown-gender placeholders
-- Restructuring to avoid gender specification
-- Case variations when placeholder position makes exact case unpredictable
-
-**Only flag** if gender/case is **explicitly specified** in context and translation contradicts it.
-
----
-
-### 2.3. Meaning-Based Translation Tolerance
-
-The Style Guide encourages natural, conversational translation that sounds originally Romanian.
-
-#### 2.3.1. Do NOT Flag as "Mistranslation"
-- Restructured sentences that preserve meaning
-- Idiomatic adaptations appropriate for Romanian
-- Simplification of complex English structures
-- Natural Romanian word order (which may differ from English)
-- Reduced nominalization (verbs used instead of noun constructions)
-
-#### 2.3.2. Do NOT Flag as "Omission/Addition"
-- Removal of excessive exclamation marks (English → Romanian tone adjustment)
-- Adjustment of articles for natural Romanian flow
-- Definite article placement variations (enclitic article handling)
-- Addition of elements required for grammatical Romanian
-
-**Only flag** if core meaning is changed or lost.
+### 2.2 Formatting & Technical
+- **Dates**: `DD.MM.YYYY`. Do not capitalize month names.
+- **Time**: 24-hour format (e.g., `14:53`).
+- **Numbers**: Use full stop `.` for thousands, comma `,` for decimals.
+- **Currency**: `250 EUR`. Use non-breaking space. **Do not use symbols** (`€`) in text (graphic contexts only).
+- **Hyphens**: No spaces before/after (e.g., `1-23 septembrie`).
+- **Dashes**: Use for pauses (replace with comma/colon if possible). If a place name has a hyphen, use a dash preceded/followed by a hyphen (e.g., `București – Cluj-Napoca`).
+- **Units**: Use metric system.
 
 ---
 
-### 2.4. Punctuation & Formatting Tolerance
-
-#### 2.4.1. Do NOT Flag
-- Romanian quotation marks („") vs. straight quotes ("")
-- Minor dash usage variations (em dash vs. en dash for pauses)
-- Removal of exclamation marks when they sound unnatural in Romanian
-- Replacement of dashes with commas or colons for clarity
-- Minor comma placement variations for natural flow
-
-#### 2.4.2. Only Flag If
-- Question becomes statement (? removed from question)
-- Punctuation creates meaning confusion
-- Excessive punctuation that impairs readability
+## 3. Technical & Placeholders
+- **URL Requirements**: 
+  - **All lowercase**.
+  - **No special/extended characters** (replace with Latin base).
+  - **Hyphens only** for word separation.
+- **Placeholders/Variables**: **DO NOT translate, delete, or change**.
+  - Keep exact order. Ensure sentence grammar works (use workarounds if needed).
+  - *Example (Grammar workaround)*:
+    - English: "Your trip to @@destination@@"
+    - Romanian: "Călătoria ta cu destinația @@destination@@" (avoids preposition mismatch between cities/countries).
 
 ---
 
-### 2.5. Number & Date Format Tolerance
+## 4. Brand & Content-Specific Rules
+### 4.1 Feature Names & Brand
+- **Skyscanner**: Never translate. Add modifiers like "platforma", "site-ul" if needed.
+- **Feature Names**: Prioritize meaning over literal translation. Must be short, clear, and familiar to local users.
+- **Best**: Use only when clear disclaimers are present (e.g., sorting results). Avoid otherwise.
 
-#### 2.5.1. Do NOT Flag
-- Minor variations in date separator (14.04.2016 vs. 14/04/2016) if consistent
-- Written-out small numbers OR digits, unless inconsistent within same text
-- Conversational ranges ("între 2 și 7") OR hyphenated ranges ("2-7") for space constraints
-- "3 milioane" vs. "3.000.000" for large round numbers
+### 4.2 UI & CTAs
+- **Tone**: Short, clear, action-focused.
+- **Structure**: One idea per string.
+- **CTAs**: **Must use imperative form**.
+- **Consistency**: Use identical wording for recurring elements (e.g., always "Price Alerts").
 
-#### 2.5.2. Only Flag If
-- Thousands/decimal separators are wrong (comma for thousands, period for decimals = WRONG)
-- Date format is clearly incorrect or confusing
-- Capitalized days/months in running text (Joi, Aprilie = WRONG)
+### 4.3 Marketing & SEO
+- **Marketing**: Fluid, inspirational, natural. Avoid literal translations.
+- **SEO**: Use natural search language. Avoid keyword stuffing.
+- **Google Ads**: Very concise, clear benefits, direct CTA. No unprovable claims.
 
----
-
-### 2.6. Currency Format Tolerance
-
-#### 2.6.1. Do NOT Flag
-- "250 EUR" format (preferred)
-- "250 de euro" in conversational text
-- Minor spacing variations around currency codes
-
-#### 2.6.2. Only Flag If
-- Currency symbol used where code should be (€250 in body text)
-- Wrong currency code
-- Missing space between number and currency code in formal contexts
+### 4.4 Sustainability
+- **Strictly factual**: Use comparatives (e.g., "X is more sustainable than Y").
+- **Avoid**: "Green", "natural", "clean", "eco", "guilt-free".
+- **Data**: Only reference environmental performance when based on measurable data.
 
 ---
 
-### 2.7. Terminology & Synonym Tolerance
-
-| English | Acceptable Romanian Options |
-|---------|----------------------------|
-| Flight | zbor, cursă aeriană |
-| Book (verb) | rezerva, a face o rezervare |
-| Search | căuta, a efectua o căutare |
-| Deal | ofertă, promoție |
-| Trip | călătorie, excursie, vacanță |
-| Hotel | hotel |
-| Save (money) | economisi, a face economii |
-| Save (bookmark) | salva, păstra |
-| App | aplicație, app |
-| Check-in | check-in, înregistrare |
-
-**Do NOT flag** reasonable synonym choices unless they change meaning.
+## 5. Quick Reference Table
+| Element | Guideline |
+| :--- | :--- |
+| **Address** | Use informal "tu". |
+| **Active Voice** | Use everywhere possible. |
+| **Airport Names** | Do not duplicate "airport" (e.g., `Zbor de la Aeroportul @@name@@`). |
+| **Titles/CTAs** | Sentence case, imperative for CTAs. |
+| **Punctuation** | No exclamation marks in instructions. |
+| **Vocabulary** | No Anglicisms (use natural RO equivalents). |
+| **Sustainability**| Use relative comparisons (e.g., 20% less). |
 
 ---
 
-### 2.8. Anglicism Tolerance
+## 6. Examples (Correct vs. Incorrect)
 
-#### 2.8.1. Do NOT Flag
-- Widely understood English terms: "online", "check-in", "email", "site", "link", "app"
-- Technical terms without good Romanian equivalents
-- Brand names and product names kept in English
+**Correcting Tone & Style**
+- **Do**: "În sfârșit ai un mod de a compara zborurile fără să-ți blochezi computerul."
+- **Don't**: "Avertisment: instrumentul nostru... Ține-te bine și bucură-te de economii!" (Too excited/informal).
 
-#### 2.8.2. Only Flag If
-- Niche jargon that general audience wouldn't understand
-- English term used when natural Romanian equivalent exists AND is clearly better
-- Inconsistent use of anglicism vs. Romanian equivalent in same text
+**Addressing Users**
+- **Do**: "Vrei să afli în ce zi zborurile sunt cele mai ieftine? Te ajutăm noi."
+- **Don't**: "Dacă încerci să îți dai seama... respiră și relaxează-te. De asta suntem aici." (Overly long/conversational).
 
----
+**Capitalization & UI**
+- **Do**: "Rezervă acum"
+- **Don't**: "Rezervă Acum" (No title case).
+- **Do**: "Afișează zboruri"
+- **Don't**: "Aruncă o privire la câteva zboruri..." (Too wordy).
 
-### 2.9. Formality & Register Tolerance
+**Sustainability**
+- **Do**: "Acest zbor are cu 20% mai puține emisii de CO2 decât un zbor obișnuit."
+- **Don't**: "Acesta este un zbor sustenabil." (Vague/Greenwashing).
 
-#### 2.9.1. Do NOT Flag
-- Use of "tu" form throughout (this is CORRECT per style guide)
-- Conversational, casual phrasing
-- Reduced nominalization (verbs over noun constructions)
-- Informal expressions appropriate for friendly tone
-
-#### 2.9.2. Only Flag If
-- Mixed formality ("tu" and "dumneavoastră" in same context)
-- Overly formal/bureaucratic tone inappropriate for Skyscanner voice
-- Register clearly wrong for content type (e.g., too casual for legal content)
-
----
-
-### 2.10. Definite Article & Case Tolerance
-
-Romanian uses enclitic (suffixed) definite articles and has complex case declension.
-
-#### 2.10.1. Do NOT Flag
-- Appropriate case choice for sentence structure (even if different from literal source)
-- Article placement following Romanian grammar rules
-- Restructuring to handle case agreement with placeholders
-
-#### 2.10.2. Only Flag If
-- Incorrect case that creates grammatical error
-- Missing or wrong article that affects meaning
-- Case error that would be noticed by native speaker as incorrect
-
----
-
-### 2.11. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, wrong currency |
-| **Major** | Core meaning changed, factual errors, wrong formality level for content type |
-| **Minor** | Style preferences, minor inconsistencies within acceptable range |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.10 |
-
----
-
-### 2.12. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Is this a **natural restructuring** for Romanian grammar and flow?
-2. ☐ Is the **informal "tu" register** correctly maintained?
-3. ☐ Is the **core meaning preserved** despite structural changes?
-4. ☐ Does the Style Guide **explicitly prohibit** this choice?
-5. ☐ Would a native Romanian speaker find this **incorrect** (not just different)?
-6. ☐ Is this an **acceptable anglicism** widely understood in Romania?
-7. ☐ Are **quotation marks** functional even if not ideal Romanian style?
-
-**If meaning is preserved AND the structure sounds natural in Romanian → DO NOT FLAG**
+**Addressing "Best" / Superlatives**
+- **Do**: "Compară oferte de zbor către Paris și găsește opțiunea potrivită pentru tine."
+- **Don't**: "Găsește cele mai bune zboruri către Paris." (Avoid superlative "cele mai bune").

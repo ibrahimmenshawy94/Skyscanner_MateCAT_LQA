@@ -1,339 +1,92 @@
-# Skyscanner French (FR) – LQA Calibration & Style Guide
-
-## 1. Style Guide Summary
-
-### 1.1. Voice & Tone
-- **Creative license** — transcreate freely; don't follow English word-for-word
-- Text should sound as if **written directly in French**
-- Message must remain intact, but phrasing can change completely
-- Use simple, accessible language — speak like everyday people
-- Brand name: **Skyscanner** (keep in English)
-
-### 1.2. Form of Address
-| Form | Usage |
-|------|-------|
-| **vous** | Always use (formal) |
-| **tu** | **NEVER use** — even in casual contexts |
-
-### 1.3. Punctuation & Capitalisation
-
-#### Titles
-| Rule | ✓ Correct | ✗ Incorrect |
-|------|-----------|-------------|
-| No English-style title case | Vous pouvez compter sur nous | Vous Pouvez Compter Sur Nous |
-| No full stop (single sentence) | Vous pouvez compter sur nous | Vous pouvez compter sur nous. |
-| Full stop OK (multi-sentence) | Besoin d'un hôtel ? Nous pouvons vous aider. | Besoin d'un hôtel ? Nous pouvons vous aider |
-
-#### Bullet Lists
-| List Type | Format |
-|-----------|--------|
-| Phrases/sentences | Full stop after each item |
-| Single words/concepts | No full stops |
-| **Never use** | Semicolons (;) with final full stop |
-
-### 1.4. Dashes & Hyphens
-- **Avoid en-dash (–)** for expressing ":" — use colon or new sentence instead
-- When splitting into sentences, ensure both have proper punctuation
-
-| ✓ Correct | ✗ Incorrect |
-|-----------|-------------|
-| New York vous attend : réservez dès maintenant. | New York vous attend – réservez dès maintenant. |
-| New York vous attend. Réservez dès maintenant. | New York vous attend. Réservez dès maintenant |
-
-### 1.5. Special Characters & Formatting
-| Element | Rule | Example |
-|---------|------|---------|
-| Accents on capitals | Always use | Évadez-vous ✓ (not Evadez-vous) |
-| Ampersand (&) | Never use | "hôtel et vol" ✓ (not "hôtel & vol") |
-| "and/or" | Use "ou" only | "ou" ✓ (not "et/ou") |
-| Guillemets | French style with spaces | « texte » |
-| Apostrophes | Straight | l'hôtel (not l'hôtel with curved) |
-| Ordinals | No superscripts | 18e, 1er ✓ (not XVIIIᵉ, 1ᵉʳ) |
-
-### 1.6. Non-breaking Spaces
-Required in French typography (shown with _):
-
-| Context | Format |
-|---------|--------|
-| Dates | 18_mars_2020 |
-| Before ? ! : ; | Des questions_? |
-| Numbers + labels | Question_3 |
-| Time | 20_h_59 |
-| After symbols | *_Données |
-
-### 1.7. Numbers, Dates & Currency
-| Element | Format | Example |
-|---------|--------|---------|
-| Decimal separator | Comma | 1 000,50 |
-| Thousand separator | Space | 1 000 000 |
-| Date format | DD Month YYYY | 18 mars 2024 |
-| Time | 24h with spaces | 8 h 20 |
-| Currency | After amount + nbsp | 99 € |
-
-### 1.8. Buttons/CTAs/Clickable Links
-- Use **infinitive form**
-- Use **"me/I" voice** instead of "you"
-
-| ✓ Correct | ✗ Incorrect |
-|-----------|-------------|
-| Réserver mon vol | Réservez votre vol |
-| Consulter mes réservations | Consultez vos réservations |
-
-### 1.9. Anglicisms
-- **Don't avoid at all costs** — use common French anglicisms
-- Avoid jargon/obscure English terms
-- Prefer French when commonly used: "enregistrement" over "check-in"
-- OK to use: "marketing", "email" (if commonly used in French)
-
-### 1.10. Accessibility & Inclusion
-- **Avoid gendered adjectives** when referring to users
-- Rephrase to be neutral; use "(e)" only as last resort
-
-| ✓ Preferred | ✗ Avoid |
-|-------------|---------|
-| Vous recevrez votre remboursement. | Vous serez remboursé(e). |
-| Est-ce que … vous apporte satisfaction ? | Êtes-vous satisfait(e) de… ? |
-
-### 1.11. Repetitions
-- **Avoid repetitions** — English is more liberal with them
-- Use pronouns, synonyms, or restructure
-
-| ✓ Correct | ✗ Incorrect |
-|-----------|-------------|
-| Vous souhaitez réserver un vol ? Trouvez les meilleurs prix et faites-le dès aujourd'hui. | Vous souhaitez réserver un vol ? Trouvez les meilleurs prix et réservez un vol aujourd'hui. |
-
-### 1.12. Plurals
-- **Avoid "(s)"** — rephrase or pick one form
-- Use only as last resort when context makes meaning clear
-
----
-
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
-
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
-
----
-
-### 2.1. Creative Translation Tolerance
-
-The Style Guide explicitly grants **creative license** for transcreation.
-
-#### 2.1.1. Do NOT Flag as "Mistranslation"
-- Sentences completely restructured for natural French
-- English structure abandoned for idiomatic French
-- Phrasing that sounds "written directly in French"
-- Different word choices that preserve meaning
-- Repetitions avoided through pronouns or restructuring
-
-#### 2.1.2. Do NOT Flag as "Omission/Addition"
-- Elements restructured for French flow
-- Repetitive terms replaced with pronouns
-- "and/or" translated as just "ou"
-- Context-appropriate adaptations
-
-**Only flag** if **core meaning is changed, lost, or contradicted**.
-
----
-
-### 2.2. Form of Address Tolerance
-
-#### 2.2.1. Do NOT Flag
-- Consistent use of "vous" throughout
-- "Vous" in all contexts (casual or formal)
-
-#### 2.2.2. Only Flag If
-- "Tu" used instead of "vous" (NEVER acceptable)
-- Inconsistent mixing of forms
-
----
-
-### 2.3. Punctuation & Capitalisation Tolerance
-
-#### 2.3.1. Titles
-**Do NOT Flag:**
-- Sentence case (not English title case)
-- Single-sentence titles without full stop
-- Multi-sentence titles with full stops
-
-**Only Flag If:**
-- English-style title case applied
-- Inconsistent punctuation in multi-sentence titles
-
-#### 2.3.2. Bullet Lists
-**Do NOT Flag:**
-- Full stops after phrase items
-- No punctuation for single-word items
-- Consistent formatting within list
-
-**Only Flag If:**
-- Semicolons used with final full stop (old French style)
-- Inconsistent punctuation within same list
-
-#### 2.3.3. Dashes
-**Do NOT Flag:**
-- Colons used instead of en-dashes
-- New sentences instead of dashes
-- Proper punctuation on both parts
-
-**Only Flag If:**
-- En-dash creates confusion
-- Incomplete punctuation when sentences are split
-
----
-
-### 2.4. Non-breaking Space Tolerance
-
-#### 2.4.1. Do NOT Flag
-- Non-breaking spaces before : ; ! ? (often not visually verifiable)
-- Non-breaking spaces in dates, times
-- Regular spaces in contexts where non-breaking would be ideal but display is correct
-- Minor spacing variations
-
-#### 2.4.2. Only Flag If
-- Missing space entirely before double punctuation
-- Line breaks within date/time units (if verifiable)
-- Spacing creates clear visual issues
-
----
-
-### 2.5. Special Character Tolerance
-
-#### 2.5.1. Do NOT Flag
-- Accents on capital letters (É, À, etc.)
-- Straight apostrophes (common on French keyboards)
-- Regular ordinals without superscripts (18e, 1er)
-- French guillemets « » with spaces
-
-#### 2.5.2. Only Flag If
-- Missing accents on capitals where required
-- Ampersand (&) used instead of "et"
-- "et/ou" used instead of "ou"
-- Superscripts causing display issues
-
----
-
-### 2.6. Button/CTA Voice Tolerance
-
-#### 2.6.1. Do NOT Flag
-- Infinitive form: "Réserver mon vol"
-- "Me/I" voice: "mon vol", "mes réservations"
-- Consistent CTA style throughout
-
-#### 2.6.2. Only Flag If
-- Imperative "vous" form in CTAs: "Réservez votre vol"
-- Inconsistent mixing of styles in same context
-
----
-
-### 2.7. Anglicism Tolerance
-
-#### 2.7.1. Do NOT Flag
-- Common French anglicisms used naturally (marketing, email)
-- French equivalents used for terms with good French alternatives
-- Consistent terminology choices
-
-#### 2.7.2. Only Flag If
-- Obscure English jargon that French users wouldn't understand
-- Anglicism used when clear French term is more common
-- Inconsistent use of same term
-
----
-
-### 2.8. Gender Neutrality Tolerance
-
-#### 2.8.1. Do NOT Flag
-- Sentences restructured to avoid gendered adjectives
-- Neutral formulations used
-- "(e)" used only when unavoidable
-- Consistent approach to gender throughout
-
-#### 2.8.2. Only Flag If
-- Unnecessarily gendered when neutral option exists
-- Inconsistent gender handling
-
----
-
-### 2.9. Number & Date Format Tolerance
-
-#### 2.9.1. Do NOT Flag
-- Comma for decimals, space for thousands
-- Date format: DD Month YYYY
-- 24h time format with spaces: 8 h 20
-- Currency after amount: 99 €
-
-#### 2.9.2. Only Flag If
-- Wrong decimal separator (period instead of comma)
-- Wrong date order
-- Currency format creates confusion
-
----
-
-### 2.10. Terminology & Synonym Tolerance
-
-| English | Acceptable French Options |
-|---------|---------------------------|
-| Flight | vol |
-| Book | réserver |
-| Search | rechercher, chercher |
-| Deal / Offer | offre, promotion |
-| Trip | voyage, séjour |
-| Hotel | hôtel |
-| Reload/Refresh | Recharger (preferred over Rafraîchir) |
-| Read (documents) | Consulter (preferred), Lire (acceptable) |
-| Check-in | enregistrement (preferred) |
-| Save | économiser (money), enregistrer (data) |
-
-**Do NOT flag** reasonable synonym choices that preserve meaning.
-
----
-
-### 2.11. Repetition Avoidance Tolerance
-
-#### 2.11.1. Do NOT Flag
-- Pronouns used to avoid repeating nouns
-- Synonyms used for variety
-- Restructured sentences that eliminate repetition
-- "faites-le" instead of repeating "réservez un vol"
-
-#### 2.11.2. Only Flag If
-- Pronoun reference is unclear
-- Meaning is lost due to changes
-
----
-
-### 2.12. Locale Tolerance
-
-#### 2.12.1. Do NOT Flag
-- Terms kept inclusive for all French-speaking regions
-- Not over-localized for France only
-- Standards that work internationally
-
-#### 2.12.2. Only Flag If
-- France-specific terms exclude other French speakers
-- Regional terms that cause confusion
-
----
-
-### 2.13. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, functional errors |
-| **Major** | Core meaning changed, "tu" used instead of "vous", factual errors, ampersand used |
-| **Minor** | Style preferences within acceptable range, minor formatting inconsistencies |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.12 |
-
----
-
-### 2.14. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Is this a **creative transcreation** that sounds natural in French?
-2. ☐ Is **"vous"** used consistently (not "tu")?
-3. ☐ Does the punctuation follow **French rules** (not English)?
-4. ☐ Is repetition **avoided** through pronouns or restructuring?
-5. ☐ Does the Style Guide **explicitly prohibit** this choice?
-6. ☐ Would a native French speaker find this **incorrect** (not just different from source)?
-
-**If meaning is preserved AND the translation sounds naturally French → DO NOT FLAG**
+# FR Style Guide for Skyscanner
+
+## Critical Requirements
+**Priority Hierarchy**: Be **Helpful** (foundation), then **Geeky** (data-driven/human), then **Playful** (tone/energy). If forced to choose, prioritize **Helpful**.
+
+**Tone of Voice**:
+- **Helpful**: Simplify complex info, lead with benefits, be honest/transparent. Use 1st person plural ("nous") for Skyscanner.
+- **Geeky**: Show expertise/curiosity, explain data clearly, enthusiastic but controlled.
+- **Playful**: Conversational, light energy, use travel hacks. **Avoid**: Corporate jargon, overly formal/stiff phrasing, "LOL-funny" attempts.
+- **Goal**: Sound like a savvy, friendly travel pal.
+
+## 1. Technical & Functional Rules
+
+### 1.1 URL Requirements
+- **Format**: All `lowercase`, no spaces (use hyphens `-`), no special/extended characters (use basic Latin).
+
+### 1.2 Placeholders, Variables & Tags
+- **Handling**: Never translate, delete, or change placeholders/tags (e.g., `@@city@@`).
+- **Implementation**: Ensure correct order and grammar. If syntax requires, use periphrasis or reordering to ensure natural French without breaking variable usage. Note: Country variables do not include the article.
+
+### 1.3 Inclusive Language
+- **Avoid**: Stereotypes, gendered language (use bracketed forms if unavoidable), assumptions about the traveler.
+- **Preference**: Use neutral, precise terms.
+
+## 2. Punctuation, Grammar & Formatting
+
+### 2.1 Punctuation
+- **Apostrophes**: Use straight apostrophes `'`.
+- **Ellipsis**: Use three dots `...` (no typographic symbol).
+- **Guillemets**: Use `« »` with non-breaking spaces.
+- **Exclamation Marks**: Use sparingly. Avoid multiple marks.
+- **Dashes**: Avoid en/em-dashes. Use standard punctuation or new sentences.
+- **Full Stops**:
+    - **Do NOT use** in CTAs or titles.
+    - **MUST use** in subheaders and body copy.
+    - **Lists**: Use full stops if items are phrases; do not use if items are single words/concepts.
+- **Non-breaking spaces**: Required before `: ; ! ? %` and within dates/names/units.
+
+### 2.2 Formatting
+- **Numbers**: Use standard French format (comma for decimals, space for thousands).
+- **Time**: Use 24h format.
+- **Superscripts**: Do not use.
+- **Capitalization**:
+    - Use accented characters on caps.
+    - Titles/CTAs: Capitalize first word only, rest lowercase (except proper nouns).
+    - Colon: Use lowercase letter after.
+    - Months/Days: Lowercase unless in isolation.
+    - Nicknames (Geo): Capitalize every word.
+- **Address Policy**: Use formal **"vous"** consistently across all content.
+
+## 3. Linguistic Guidelines
+
+### 3.1 Terminology & Brand
+- **Skyscanner**: Never translate, never add articles.
+- **"Best"**: Avoid superlatives unless a disclaimer explains the measurement method. If unverified, use "prix avantageux" or "super offres".
+- **Discounts**: **Never** claim "we offer a discount." External partners provide discounts. Use neutral phrasing: "You are offered a discount."
+- **Anglicisms**: Avoid unless widely accepted (e.g., brand names, tech terms). Ensure consistency.
+- **Abbreviations**: Use only if widely understood. Write out full term first + abbreviation in brackets if unclear.
+
+### 3.2 Sustainability (Greenwashing Avoidance)
+- **Avoid**: Vague buzzwords ('green', 'eco', 'planet-friendly', 'guilt-free').
+- **Requirement**: Use factual, data-based comparatives.
+    - *Example*: Use "20% less carbon" instead of "a greener flight".
+- **Focus**: Transparent, measurable impact.
+
+### 3.3 Content-Specific Directives
+- **UI**: Short, clear, action-focused. 1 idea per string.
+- **Marketing**: Natural, fluid, inspirational.
+- **SEO**: Natural language, no keyword stuffing.
+- **Ads**: Concise, clear benefits, direct CTA. Avoid clickbait.
+- **Legal**: Neutral, precise, no emotional/idiomatic language.
+- **Surveys**: Use neutral, unbiased phrasing (bipolar/unipolar scales).
+
+## 4. Representative Examples (Do/Don't)
+
+| Feature | Do | Don't |
+| :--- | :--- | :--- |
+| **Tone** | Comparez des vols sans ouvrir trop d’onglets. | Vous vous perdez entre trop d'onglets ? Respirez. |
+| **Punctuation** | New York vous attend : réservez. | New York vous attend — réservez. |
+| **CTAs** | Réserver maintenant | Réserver Maintenant |
+| **Formatting** | 20 % | 20% (with space) |
+| **Geo** | Aéroport Paris Charles de Gaulle | Aéroport Paris Charles de Gaulle International |
+| **"Best"** | Prix avantageux | Meilleur prix au monde (unverified) |
+| **Sustainability** | Émet 20 % de carbone en moins. | C’est le choix le plus vert. |
+| **Structure** | Cliquez sur « Revenir aux résultats ». | Cliquez sur REVENIR AUX RÉSULTATS. |
+| **Address** | Vous pouvez chercher un vol | Tu peux chercher un vol |
+
+## 5. Resources for Transliteration/Names
+- Official French government recommendations (states, capitals).
+- Wikipedia (Typographical conventions, geographical lists, UNESCO, etc.).
+- Use official local names for airports/cities; avoid outdated forms.
+- **Airport Names**: Do not add "airport" if redundant; "international" goes at the end.

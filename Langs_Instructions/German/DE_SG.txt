@@ -1,308 +1,97 @@
-# Skyscanner German (DE) – LQA Calibration & Style Guide
-
-## 1. Style Guide Summary
-
-### 1.1. Voice & Tone
-- **Put the traveller first** — every sentence should be helpful
-- Use a **conversational, friendly tone** — imagine talking to a friend
-- Keep it **simple** — short sentences, simple words
-- Use **active voice** — avoid passive and Nominalstil (noun-heavy constructions)
-- Avoid **bureaucratic, formal, convoluted sentences**
-- Use **exclamation marks sparingly**
-- Follow **Duden** recommendations (www.duden.de)
-- Brand name: **Skyscanner** (keep in English)
-
-### 1.2. Form of Address
-| Form | Usage |
-|------|-------|
-| **du** (informal singular) | Always use |
-| **Sie** (formal) | **Never use** (except terms & conditions) |
-| **ihr** (plural) | **Avoid** |
-
-- Write **"du", "dir", "deine" lowercase** within sentences
-
-| ✓ Correct | ✗ Incorrect |
-|-----------|-------------|
-| Gefallen dir diese Flüge? | Gefallen Dir diese Flüge? |
-| | Gefallen Ihnen diese Flüge? |
-
-### 1.3. Buttons/CTAs
-**Always use infinitive form:**
-
-| ✓ Correct | ✗ Incorrect |
-|-----------|-------------|
-| Preise anzeigen | Zeige Preise an |
-| Mehr erfahren | Erfahre mehr |
-| Weiterlesen | Lies weiter |
-
-### 1.4. Punctuation Rules
-
-#### Hyphens (Bindestrich: -)
-| Use | Don't Use |
-|-----|-----------|
-| 12-jährig, 80-prozentig | 12 jährig, 12jährig |
-| Desktop-Publishing | — |
-| Vor- und Nachteile | Vor und Nachteile |
-| Feedback | Feed-back, Feed-Back |
-
-#### Dashes (Gedankenstrich: –)
-| Use | Don't Use |
-|-----|-----------|
-| 2018–2019 (no spaces for ranges) | 2018-2019 (hyphen), 2018 – 2019 (spaces) |
-| Es ist 13:00 Uhr – los geht's! | Es ist 13:00 Uhr - los geht's! (hyphen) |
-| **Never use em-dash (—)** | — |
-
-#### Quotation Marks
-| ✓ German (99-66 rule) | ✗ Incorrect |
-|-----------------------|-------------|
-| „xyz" | "xyz", »xyz« |
-
-#### Apostrophe
-| ✓ Correct (looks like 9) | ✗ Incorrect |
-|--------------------------|-------------|
-| Los geht's | Los gehts, Los geht`s |
-| Lass dich inspirieren | Lass' dich inspirieren |
-
-#### Ellipsis
-| ✓ Correct | ✗ Incorrect |
-|-----------|-------------|
-| Wenn das deine Mutter wüsste … | Wenn das deine Mutter wüsste... |
-| (proper symbol + non-breaking space) | (three dots, no space) |
-
-### 1.5. Numbers, Dates & Currency
-
-#### Numbers
-| Element | Format | Example |
-|---------|--------|---------|
-| Numbers 1-12 | Written out | drei, zwölf |
-| Numbers 13+ | Digits | 13, 100 |
-| Thousand separator | Period | 1.534.049 |
-| Decimal separator | Comma | 299,99 |
-| Non-breaking space | Before %, units, currency | 50 %, 30 km, 250 € |
-
-#### Dates & Time (DIN 5008)
-| Element | Format | Example |
-|---------|--------|---------|
-| Full date | am [Day], den DD. Month YYYY | am Sonntag, den 14. Mai 2016 |
-| Day of month | No leading zero | 2. Februar (not 02. Februar) |
-| Numeric date | With leading zeros | 02.02.2016 |
-| Time | Colon, not period | 14:00, 14:00 Uhr |
-| Ranges | Dash, no spaces | 17.–19. November |
-
-#### Currency
-| ✓ Correct | ✗ Incorrect |
-|-----------|-------------|
-| 50 € | 50€ |
-| 299,99 Euro | 299.99 Euro |
-
-### 1.6. Special Characters
-- **Ampersand (&):** Only in brand names or when space is limited
-- **Non-breaking spaces:** Before &, –, %, currency, units
-- **Umlauts:** Use normally (ä, ö, ü, ß); transliterate only for URLs
-
----
-
-## 2. LQA CALIBRATION: FALSE POSITIVE PREVENTION
-
-**CRITICAL:** This section defines what the evaluator must **ACCEPT**. Flagging these creates unnecessary validation burden.
-
----
-
-### 2.1. Form of Address Tolerance
-
-#### 2.1.1. Do NOT Flag
-- Consistent use of informal "du" (lowercase)
-- "du", "dir", "deine" written lowercase in sentences
-- Informal tone throughout
-
-#### 2.1.2. Only Flag If
-- Formal "Sie" used (except in legal/T&C content)
-- Capitalised "Du", "Dir", "Deine" within sentences
-- Inconsistent mixing of forms
-
----
-
-### 2.2. CTA/Button Form Tolerance
-
-#### 2.2.1. Do NOT Flag
-- Infinitive form used: "Preise anzeigen", "Mehr erfahren"
-- Consistent infinitive usage in UI elements
-
-#### 2.2.2. Only Flag If
-- Imperative form used in CTAs: "Zeige Preise an"
-- Inconsistent verb forms in similar UI elements
-
----
-
-### 2.3. Punctuation Tolerance
-
-#### 2.3.1. Hyphens vs. Dashes
-**Do NOT Flag:**
-- Correct hyphen usage in compounds: 12-jährig
-- Correct dash usage for ranges without spaces: 2018–2019
-- Dash with spaces for mid-sentence breaks: Text – Text
-
-**Only Flag If:**
-- Hyphen used where dash required (or vice versa) and meaning affected
-- Em-dash (—) used (not standard in German)
-- Spaces around dashes in ranges: 2018 – 2019
-
-#### 2.3.2. Quotation Marks
-**Do NOT Flag:**
-- German quotation marks „xyz" used correctly
-- Consistent quotation style
-
-**Only Flag If:**
-- English quotation marks "xyz" used
-- French/guillemets »xyz« used
-- Inconsistent quotation mark usage
-
-#### 2.3.3. Apostrophe
-**Do NOT Flag:**
-- Correct German apostrophe (') in contractions: Los geht's
-- No apostrophe in imperatives: Lass dich
-
-**Only Flag If:**
-- Wrong apostrophe character (´ or `)
-- Unnecessary apostrophe in imperatives: Lass' dich
-- Missing apostrophe where required
-
----
-
-### 2.4. Number & Date Format Tolerance
-
-#### 2.4.1. Numbers
-**Do NOT Flag:**
-- Numbers 1-12 written out in body text
-- Numbers 1-12 as digits when space limited or clarity needed
-- Period as thousand separator: 1.534.049
-- Comma as decimal separator: 299,99
-- Non-breaking space before units/symbols
-
-**Only Flag If:**
-- Wrong thousand separator (comma): 1,534,049
-- Wrong decimal separator (period): 299.99
-- Format creates confusion
-
-#### 2.4.2. Dates & Time
-**Do NOT Flag:**
-- DIN 5008 format followed
-- Colon in time: 14:00
-- Dash for ranges without spaces: 17.–19.
-
-**Only Flag If:**
-- Period in time instead of colon: 14.00
-- Wrong date format that causes confusion
-- Spaces around dashes in date ranges
-
----
-
-### 2.5. Meaning-Based Translation Tolerance
-
-The Style Guide encourages **conversational, natural translation**.
-
-#### 2.5.1. Do NOT Flag as "Mistranslation"
-- Sentences restructured for natural German flow
-- Active voice used instead of passive
-- Nominalstil avoided through restructuring
-- Simple words used instead of complex equivalents
-- Short sentences instead of long compound ones
-
-#### 2.5.2. Do NOT Flag as "Omission/Addition"
-- Elements restructured for German grammar
-- Context-appropriate adaptations
-- Bureaucratic phrases simplified
-
-**Only flag** if **core meaning is changed, lost, or contradicted**.
-
----
-
-### 2.6. Non-Breaking Space Tolerance
-
-#### 2.6.1. Do NOT Flag
-- Non-breaking spaces before %, €, units (often not visually verifiable)
-- Regular spaces where non-breaking would be ideal but display is correct
-- Minor spacing variations
-
-#### 2.6.2. Only Flag If
-- Missing space entirely between number and unit/symbol
-- Clear line break issues (if verifiable)
-
----
-
-### 2.7. Compound Word Tolerance
-
-German allows various compound formations.
-
-#### 2.7.1. Do NOT Flag
-- Established English loanwords written as one word: Feedback
-- Hyphenated compounds for readability: Privatsphäre-Einstellungen
-- Duden-recommended spellings
-
-#### 2.7.2. Only Flag If
-- Compound incorrectly split: Feed back
-- Unnecessary hyphenation of established terms
-- Spelling contradicts Duden recommendation
-
----
-
-### 2.8. Terminology & Synonym Tolerance
-
-| English | Acceptable German Options |
-|---------|---------------------------|
-| Flight | Flug, Flüge |
-| Book | buchen, reservieren |
-| Search | suchen, Suche |
-| Deal / Offer | Angebot, Deal |
-| Trip | Reise, Trip, Urlaub |
-| Hotel | Hotel, Unterkunft |
-| Save (money) | sparen |
-| Save (data) | speichern |
-| Car rental | Mietwagen, Autovermietung |
-
-**Do NOT flag** reasonable synonym choices that preserve meaning.
-
----
-
-### 2.9. Style Simplification Tolerance
-
-The Style Guide explicitly discourages formal/bureaucratic language.
-
-#### 2.9.1. Do NOT Flag
-- Simple words used instead of formal equivalents
-- Active voice replacing passive constructions
-- Short sentences replacing long compound sentences
-- Noun-heavy constructions avoided
-- Informal tone maintained
-
-#### 2.9.2. Only Flag If
-- Oversimplification changes meaning
-- Tone becomes inappropriate for context
-- Key information lost
-
----
-
-### 2.10. Severity Calibration
-
-| Severity | Apply When |
-|----------|------------|
-| **Critical** | Placeholder corruption, complete meaning inversion, broken tags, functional errors |
-| **Major** | Core meaning changed, formal "Sie" used, wrong CTA form (imperative vs. infinitive), factual errors |
-| **Minor** | Style preferences within acceptable range, minor punctuation inconsistencies, formatting preferences |
-| **Do Not Flag** | Issues covered by tolerance rules 2.1–2.9 |
-
----
-
-### 2.11. Pre-Flag Checklist
-
-Before flagging, verify:
-
-1. ☐ Is **"du"** used consistently (not "Sie")?
-2. ☐ Are CTAs in **infinitive form** (not imperative)?
-3. ☐ Does the punctuation follow **German rules** (Duden)?
-4. ☐ Are **German quotation marks** „xyz" used?
-5. ☐ Is the translation **conversational and simple** (not bureaucratic)?
-6. ☐ Does the Style Guide **explicitly prohibit** this choice?
-7. ☐ Would a native German speaker find this **incorrect** (not just different from source)?
-
-**If meaning is preserved AND the translation follows German conventions → DO NOT FLAG**
+# DE Style Guide for Skyscanner
+
+## Critical Requirements
+
+*   **Tone Priority**: 1. Helpful, 2. Geeky, 3. Playful.
+*   **Formality**: Use informal singular **"du"** (lowercase: *du, dir, deine*).
+*   **Accuracy & Compliance**: Adhere to **Duden** for grammar and spelling.
+*   **Superlatives**: Do not claim "best prices" or "cheapest" without clear, measurable disclaimers. Avoid clickbait.
+*   **Sustainability**: No greenwashing. Use comparatives (e.g., "lower carbon emissions") instead of absolute labels (e.g., "green," "eco-friendly," "sustainable").
+*   **Voice**: Use **active voice**. Avoid noun-heavy structures (*Nominalstil*).
+*   **Brand**: Never translate "Skyscanner".
+
+## Tone and Voice
+
+### The "Geeky Travel Pal" Persona
+*   **Playful**: Conversational, light, natural rhythm. Use rhyme, alliteration, and metaphors only if they localize naturally; do not force. Avoid "fake-smart" corporate speak or "LOL-funny" attempts. **Clarity > Wordplay**.
+*   **Geeky**: Passionate about data and patterns, explained humanly. Enthusiastic but controlled. Break complex info into simple steps.
+*   **Helpful**: First priority. If a choice conflicts, choose **Helpful**. Be honest, upfront, and transparent.
+
+## General Writing Guidelines
+
+### Language & Grammar
+*   **Inclusive Language**: Avoid stereotypes (gender, age, family, background). Prefer neutral terms: *Alle Reisenden* (not *Jeder Nutzer*); *2 Gäste/Übernachtungsgäste* (not *2 Besucher*). Use generic masculine only if no neutral term exists and space is constrained.
+*   **Anglicisms**: Use only if widely understood (e.g., *Deal*). Avoid unnecessary ones.
+*   **Abbreviations**: Use only if widely known (airport codes). Write out full term on first mention if ambiguous.
+*   **Active Voice**: Always prioritize active, direct sentences.
+*   **Capitalization**: Follow standard German rules (nouns, first word of sentence). No Title Case.
+
+### Punctuation & Formatting
+*   **Commas**: No Oxford comma.
+*   **Ellipsis**: Exactly three dots (`...`), preceded by a non-breaking space.
+*   **Quotes**: Use `„xyz“` (99-66 rule). Single quotes for nested: `„xyz ‚xyz‘ xyz.“`
+*   **Hyphens**: Use for compound nouns/numbers (e.g., *80-prozentig*). Do not use if the combination is a standard German noun (e.g., *Feedback*).
+*   **Dashes**: Use for thought strings or time spans (no spaces for time spans).
+*   **Ampersands**: Use only for brand names or UI space constraints (buttons). Use a non-breaking space before `&`.
+*   **Apostrophes**: Must look like a 9. Only use when grammatically required.
+*   **Percentage/Units**: Use a non-breaking space between number and symbol (`20 %`, `1.500 km`).
+
+### Numbers, Dates, and Time
+*   **Writing Numbers**: Write out numbers up to 12. Use digits for 13+.
+*   **Formatting**: Use decimal commas (`,`) and thousand-separator dots (`.`). 
+*   **DIN 5008**: Follow guidelines for date/time formatting.
+
+### URL Rules
+*   **Format**: Lowercase, no spaces, no special characters/accents.
+*   **Separators**: Use hyphens (`-`) to separate words.
+
+### Placeholders & Tags
+*   **Rule**: Never translate, delete, or change placeholders (e.g., `@@city@@`). 
+*   **Context**: Ensure grammatical compatibility in German (word order, prepositions) when inserting tags. Use spaces before/after tags to prevent concatenation.
+
+## Content-Type Specific Guidelines
+
+*   **UI**: Short, clear, action-focused. One idea per string. Consistent terminology (e.g., always "Price Alerts").
+*   **Marketing**: Natural, fluid, inspirational. Prioritize traveller benefits.
+*   **SEO**: Natural language, no keyword stuffing. Clear, descriptive headings.
+*   **Google Ads**: Concise. Benefit-driven. Strict character limits. No unprovable claims.
+*   **App Store**: Highlight features (search, compare, track). No superlatives.
+*   **Editorial/Blog**: Warm, descriptive, factual. Balance inspiration with practical tips.
+*   **Legal/Policies**: Precise, neutral, consistent. No emotional language or jokes.
+
+## Specific Terminology & Usage
+
+*   **Skyscanner Brand**: Never translate. No articles unless required by grammar.
+*   **Discounts**: Skyscanner does not offer discounts (partners do). Never say "Skyscanner offers a discount". Use: "You are offered a discount."
+*   **Airport Names**: Don't add "Airport" if already present in source. Use official sources for naming.
+*   **Feature Names**: Focus on clarity over literal translation. Must be short, scannable, and natural.
+*   **Sustainability**: 
+    *   Prefer: "X has 20% lower carbon emissions than a typical flight."
+    *   Avoid: "This is a sustainable flight" or "greenest option."
+    *   Use metrics/data-backed claims only.
+
+## Do's and Don'ts Summary
+
+*   **Tone**: 
+    *   *Do*: "Möchtest du wissen, an welchem Tag du am günstigsten fliegen kannst? Wir helfen dir gerne weiter."
+    *   *Don't*: Overly casual/forced humor ("Schnall dich an und schnapp dir die Ersparnisse!").
+*   **Clarity**:
+    *   *Do*: "Du findest die besten Flugpreise aus Tausenden Optionen."
+    *   *Don't*: "Wir durchsuchen Tausende von Flugoptionen, damit du die besten Preise kriegst."
+*   **Conciseness**:
+    *   *Do*: "Jetzt buchen."
+    *   *Don't*: "Leg jetzt los und buche."
+*   **Terminology**:
+    *   *Do*: "Günstige Deals."
+    *   *Don't*: "Günstige Offers" (mixed languages).
+*   **Legal/Policy**:
+    *   *Do*: "Dies ist der beste Preis, den wir auf unserer Plattform bei unserer weitreichenden Suche gefunden haben."
+    *   *Don't*: "Dies ist der beste Preis für deinen Flug" (implies a universal superlative that cannot be substantiated).
+*   **Sensitivity**:
+    *   *Do*: "Es gibt einige steile Straßen, die für Reisende mit eingeschränkter Mobilität eine Herausforderung darstellen können."
+    *   *Don't*: "Diese Gegend ist nicht für Behinderte geeignet."
+*   **Formatting**:
+    *   *Do*: "Paris Charles de Gaulle"
+    *   *Don't*: "Paris Charles de Gaulle Airport" (redundant).
+    *   *Do*: Use ellipsis `…` (Alt+0133). 
+    *   *Don't*: `...` (3 individual dots).
